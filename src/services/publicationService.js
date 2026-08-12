@@ -166,7 +166,7 @@ export const publicationService = {
         throw error;
       }
     } else {
-      return getLocalPublications();
+      return await getLocalPublications();
     }
   },
 
