@@ -18,19 +18,28 @@ const AUTOSAVE_STORAGE_KEY = 'studio_autosaved_draft';
 // Helper para obtener datos desde LocalStorage en Modo Demo
 function getLocalPublications() {
   const stored = localStorage.getItem('studio_mock_publications');
+
   if (stored) {
     try {
       return JSON.parse(stored);
     } catch (e) {
+      console.warn('No se pudieron leer las publicaciones locales:', e);
       return INITIAL_PUBLICATIONS;
     }
   }
-  localStorage.setItem('studio_mock_publications', JSON.stringify(INITIAL_PUBLICATIONS));
+
   return INITIAL_PUBLICATIONS;
 }
 
 function saveLocalPublications(pubs) {
-  localStorage.setItem('studio_mock_publications', JSON.stringify(pubs));
+  try {
+    localStorage.setItem('studio_mock_publications', JSON.stringify(pubs));
+  } catch (error) {
+    console.error('Error al guardar publicaciones locales:', error);
+    throw new Error(
+      'No hay suficiente espacio disponible para guardar las publicaciones en este navegador.'
+    );
+  }
 }
 
 export const publicationService = {
