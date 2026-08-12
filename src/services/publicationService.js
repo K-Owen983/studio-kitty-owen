@@ -183,7 +183,7 @@ export const publicationService = {
       }
       return null;
     } else {
-      const pubs = getLocalPublications();
+      const pubs = await getLocalPublications();
       return pubs.find((p) => p.id === id) || null;
     }
   },
@@ -216,7 +216,7 @@ export const publicationService = {
         throw error;
       }
     } else {
-      const pubs = getLocalPublications();
+      const pubs = await getLocalPublications();
       const index = pubs.findIndex((p) => p.id === id);
       if (index >= 0) {
         pubs[index] = payload;
@@ -236,7 +236,7 @@ export const publicationService = {
     if (isFirebaseConfigured && db) {
       await deleteDoc(doc(db, COLLECTION_NAME, id));
     } else {
-      const pubs = getLocalPublications();
+      const pubs = await getLocalPublications();
       const filtered = pubs.filter((p) => p.id !== id);
       saveLocalPublications(filtered);
     }
