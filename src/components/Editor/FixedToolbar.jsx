@@ -17,15 +17,29 @@ export default function FixedToolbar({
   if (!editor) return null;
 
   const addLink = () => {
-    const previousUrl = editor.getAttributes('link').href;
-    const url = window.prompt('Ingresa la URL del enlace:', previousUrl);
-    if (url === null) return;
-    if (url === '') {
-      editor.chain().focus().extendMarkRange('link').unsetLink().run();
-      return;
-    }
-    editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run();
-  };
+  const previousUrl = editor.getAttributes('link').href || '';
+  const inputUrl = window.prompt('Ingresa la URL del enlace:', previousUrl);
+
+  if (inputUrl === null) return;
+
+  const url = inputUrl.trim();
+
+  if (url === '') {
+    editor.chain().focus().extendMarkRange('link').unsetLink().run();
+    return;
+  }
+
+  const normalizedUrl = /^https?:\/\//i.test(url)
+    ? url
+    : `https://${url}`;
+
+  editor
+    .chain()
+    .focus()
+    .extendMarkRange('link')
+    .setLink({ href: normalizedUrl })
+    .run();
+};
 
   const addImage = () => {
     const url = window.prompt('Ingresa la URL de la imagen:');
