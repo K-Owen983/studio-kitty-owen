@@ -15,31 +15,136 @@ import { INITIAL_PUBLICATIONS } from '../utils/sampleData';
 const COLLECTION_NAME = 'publications';
 const AUTOSAVE_STORAGE_KEY = 'studio_autosaved_draft';
 
-// Helper para obtener datos desde LocalStorage en Modo Demo
-function getLocalPublications() {
-  const stored = localStorage.getItem('studio_mock_publications');
+// =========================================================================
+// ALMACENAMIENTO LOCAL EN INDEXEDDB — MODO DEMO
+// =========================================================================
 
-  if (stored) {
-    try {
-      return JSON.parse(stored);
-    } catch (e) {
-      console.warn('No se pudieron leer las publicaciones locales:', e);
+const LOCAL_DB_NAME = 'studio_kitty_owen';
+const LOCAL_DB_VERSION = 1;
+const LOCAL_STORE_NAME = 'publications';
+
+function openLocalDB() {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(LOCAL_DB_NAME, LOCAL_DB_VERSION);
+
+    request.onupgradeneeded = () => {
+      const db = request.result;
+
+      if (!db.objectStoreNames.contains(LOCAL_STORE_NAME)) {
+        db.createObjectStore(LOCAL_STORE_NAME, { keyPath: 'id' });
+      }
+    };
+
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
+  });
+}
+
+// Obtiene todas las publicaciones locales
+async function getLocalPublications() {
+  const db = await openLocalDB();
+
+  const publications = await new Promise((resolve, reject) => {
+    const transaction = db.transaction(LOCAL_STORE_NAME, 'readonly');
+    const store = transaction.objectStore(LOCAL_STORE_NAME);
+    const request = store.getAll();
+
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
+  });
+
+  db.close();
+
+  // Si IndexedDB está vacío, intentamos recuperar
+  // las publicaciones que ya teníamos en LocalStorage.
+  if (publications.length === 0) {
+    const legacy = localStorage.getItem('studio_mock_publications');
+
+    if (legacy) {
+      try {
+        const oldPublications = JSON.parse(legacy);
+
+        const saveTransaction = await openLocalDB();
+
+        await new Promise((resolve, reject) => {
+          const transaction = saveTransaction.transaction(
+            LOCAL_STORE_NAME,
+            'readwrite'
+          );
+
+          const store = transaction.objectStore(LOCAL_STORE_NAME);
+
+          oldPublications.forEach((publication) => {
+            store.put(publication);
+          });
+
+          transaction.oncomplete = resolve;
+          transaction.onerror = () => reject(transaction.error);
+        });
+
+        saveTransaction.close();
+
+        // Ya fueron migradas. Podemos eliminar la copia antigua.
+        localStorage.removeItem('studio_mock_publications');
+
+        return oldPublications;
+      } catch (error) {
+        console.warn('No se pudieron migrar las publicaciones antiguas:', error);
+      }
+    }
+
+    // Si no había publicaciones anteriores, cargamos las iniciales.
+    if (INITIAL_PUBLICATIONS.length > 0) {
+      const initialDB = await openLocalDB();
+
+      await new Promise((resolve, reject) => {
+        const transaction = initialDB.transaction(
+          LOCAL_STORE_NAME,
+          'readwrite'
+        );
+
+        const store = transaction.objectStore(LOCAL_STORE_NAME);
+
+        INITIAL_PUBLICATIONS.forEach((publication) => {
+          store.put(publication);
+        });
+
+        transaction.oncomplete = resolve;
+        transaction.onerror = () => reject(transaction.error);
+      });
+
+      initialDB.close();
+
       return INITIAL_PUBLICATIONS;
     }
   }
 
-  return INITIAL_PUBLICATIONS;
+  return publications;
 }
 
-function saveLocalPublications(pubs) {
-  try {
-    localStorage.setItem('studio_mock_publications', JSON.stringify(pubs));
-  } catch (error) {
-    console.error('Error al guardar publicaciones locales:', error);
-    throw new Error(
-      'No hay suficiente espacio disponible para guardar las publicaciones en este navegador.'
+// Guarda todas las publicaciones locales en IndexedDB
+async function saveLocalPublications(pubs) {
+  const db = await openLocalDB();
+
+  await new Promise((resolve, reject) => {
+    const transaction = db.transaction(
+      LOCAL_STORE_NAME,
+      'readwrite'
     );
-  }
+
+    const store = transaction.objectStore(LOCAL_STORE_NAME);
+
+    store.clear();
+
+    pubs.forEach((publication) => {
+      store.put(publication);
+    });
+
+    transaction.oncomplete = resolve;
+    transaction.onerror = () => reject(transaction.error);
+  });
+
+  db.close();
 }
 
 export const publicationService = {
