@@ -1,7 +1,7 @@
 import Image from '@tiptap/extension-image';
 
 const KittyImage = Image.extend({
-  name: 'kittyImage',
+  name: 'image',
 
   addAttributes() {
     return {
