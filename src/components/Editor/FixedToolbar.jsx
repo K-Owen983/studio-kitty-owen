@@ -209,6 +209,25 @@ export default function FixedToolbar({
           <Send size={15} /> Publicar
         </button>
       </div>
+            {imageConfig && (
+        <ImageConfigModal
+          imageSrc={imageConfig.src}
+          onCancel={() => setImageConfig(null)}
+          onInsert={(config) => {
+            editor
+              .chain()
+              .focus()
+              .setImage({
+                src: imageConfig.src,
+                alt: config.altText,
+                title: config.title
+              })
+              .run();
+
+            setImageConfig(null);
+          }}
+        />
+      )}
     </div>
   );
 }
