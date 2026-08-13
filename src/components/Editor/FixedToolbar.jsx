@@ -214,18 +214,21 @@ export default function FixedToolbar({
           imageSrc={imageConfig.src}
           onCancel={() => setImageConfig(null)}
           onInsert={(config) => {
-            editor
-              .chain()
-              .focus()
-              .setImage({
-                src: imageConfig.src,
-                alt: config.altText,
-                title: config.title
-              })
-              .run();
+  editor
+    .chain()
+    .focus()
+    .setImage({
+      src: imageConfig.src,
+      alt: config.altText,
+      title: config.title,
+      caption: config.caption,
+      size: config.size,
+      alignment: config.alignment
+    })
+    .run();
 
-            setImageConfig(null);
-          }}
+  setImageConfig(null);
+}}
         />
       )}
     </div>
