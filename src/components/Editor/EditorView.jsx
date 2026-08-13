@@ -50,7 +50,7 @@ export default function EditorView() {
       StarterKit,
       Underline,
       Link.configure({ openOnClick: false }),
-      Image,
+      KittyImage,
       Table.configure({ resizable: true }),
       TableRow,
       TableHeader,
