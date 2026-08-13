@@ -9,14 +9,32 @@ const KittyImage = Image.extend({
 
       caption: {
         default: '',
+        parseHTML: element => element.getAttribute('data-caption') || '',
+        renderHTML: attributes => {
+          if (!attributes.caption) {
+            return {};
+          }
+
+          return {
+            'data-caption': attributes.caption,
+          };
+        },
       },
 
       size: {
         default: 'medium',
+        parseHTML: element => element.getAttribute('data-size') || 'medium',
+        renderHTML: attributes => ({
+          'data-size': attributes.size,
+        }),
       },
 
       alignment: {
         default: 'center',
+        parseHTML: element => element.getAttribute('data-alignment') || 'center',
+        renderHTML: attributes => ({
+          'data-alignment': attributes.alignment,
+        }),
       },
     };
   },
