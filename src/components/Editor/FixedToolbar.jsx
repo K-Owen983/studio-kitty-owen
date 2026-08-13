@@ -4,6 +4,7 @@ import {
   List, ListOrdered, Quote, Link as LinkIcon, Image as ImageIcon,
   Table as TableIcon, Code, Undo, Redo, Eye, Save, Send, ArrowLeft
 } from 'lucide-react';
+import ImageConfigModal from './ImageConfigModal';
 
 export default function FixedToolbar({
   editor,
@@ -15,7 +16,7 @@ export default function FixedToolbar({
   status
 }) {
   if (!editor) return null;
-
+  const [imageConfig, setImageConfig] = React.useState(null);
   const addLink = () => {
   const previousUrl = editor.getAttributes('link').href || '';
   const inputUrl = window.prompt('Ingresa la URL del enlace:', previousUrl);
@@ -54,12 +55,11 @@ export default function FixedToolbar({
     const reader = new FileReader();
 
     reader.onload = () => {
-      editor
-        .chain()
-        .focus()
-        .setImage({ src: reader.result })
-        .run();
-    };
+  setImageConfig({
+    src: reader.result,
+    fileName: file.name
+  });
+};
 
     reader.readAsDataURL(file);
   };
