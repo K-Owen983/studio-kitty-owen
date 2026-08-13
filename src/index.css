@@ -704,12 +704,51 @@ body {
 }
 
 .ProseMirror img {
-  max-width: 100%;
+  display: block;
   height: auto;
   border-radius: 8px;
-  margin: 1.5rem 0;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
+/* TAMAÑOS DE IMAGEN */
+
+.ProseMirror img[data-size="small"] {
+  width: 35%;
+  max-width: 100%;
+}
+
+.ProseMirror img[data-size="medium"] {
+  width: 60%;
+  max-width: 100%;
+}
+
+.ProseMirror img[data-size="large"] {
+  width: 85%;
+  max-width: 100%;
+}
+
+.ProseMirror img[data-size="full"] {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* ALINEACIÓN */
+
+.ProseMirror img[data-alignment="left"] {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.ProseMirror img[data-alignment="center"] {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ProseMirror img[data-alignment="right"] {
+  margin-left: auto;
+  margin-right: 0;
+}
 /* PIE DE HOJA: ESTADÍSTICAS */
 .editor-footer-stats {
   margin-top: auto;
