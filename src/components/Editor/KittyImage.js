@@ -38,6 +38,56 @@ const KittyImage = Image.extend({
       },
     };
   },
+
+  renderHTML({ HTMLAttributes }) {
+    const {
+      title,
+      caption,
+      size,
+      alignment,
+      ...imageAttributes
+    } = HTMLAttributes;
+
+    const children = [
+      [
+        'img',
+        {
+          ...imageAttributes,
+          ...(title ? { title } : {}),
+        },
+      ],
+    ];
+
+    if (title) {
+      children.push([
+        'div',
+        {
+          class: 'kitty-image-title',
+        },
+        title,
+      ]);
+    }
+
+    if (caption) {
+      children.push([
+        'figcaption',
+        {
+          class: 'kitty-image-caption',
+        },
+        caption,
+      ]);
+    }
+
+    return [
+      'figure',
+      {
+        class: 'kitty-image',
+        'data-size': size,
+        'data-alignment': alignment,
+      },
+      ...children,
+    ];
+  },
 });
 
 export default KittyImage;
