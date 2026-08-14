@@ -711,10 +711,7 @@ body {
   margin-bottom: 1.5rem;
 }
 
-
-/* =========================================================
-   IMÁGENES DENTRO DEL EDITOR
-   ========================================================= */
+/* TAMAÑOS DE IMAGEN */
 
 .ProseMirror img[data-size="small"] {
   width: 35%;
@@ -736,10 +733,7 @@ body {
   max-width: 100%;
 }
 
-
-/* =========================================================
-   ALINEACIÓN DE IMÁGENES NORMALES
-   ========================================================= */
+/* ALINEACIÓN */
 
 .ProseMirror img[data-alignment="left"] {
   margin-left: 0;
@@ -755,90 +749,18 @@ body {
   margin-left: auto;
   margin-right: 0;
 }
-
-
-/* =========================================================
-   IMÁGENES EDITORIALES KITTY OWEN
-   El figure controla título + imagen + pie como una unidad
-   ========================================================= */
-
-.ProseMirror figure.kitty-image {
+/* PIE DE HOJA: ESTADÍSTICAS */
+.editor-footer-stats {
+  margin-top: auto;
+  padding-top: 2rem;
   display: flex;
-  flex-direction: column;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-  padding: 0;
-  max-width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-subtle);
 }
 
-
-/* Tamaño de toda la pieza editorial */
-
-.ProseMirror figure.kitty-image[data-size="small"] {
-  width: 35%;
-}
-
-.ProseMirror figure.kitty-image[data-size="medium"] {
-  width: 60%;
-}
-
-.ProseMirror figure.kitty-image[data-size="large"] {
-  width: 85%;
-}
-
-.ProseMirror figure.kitty-image[data-size="full"] {
-  width: 100%;
-}
-
-
-/* Alineación de TODA la pieza */
-
-.ProseMirror figure.kitty-image[data-alignment="left"] {
-  margin-left: 0;
-  margin-right: auto;
-}
-
-.ProseMirror figure.kitty-image[data-alignment="center"] {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.ProseMirror figure.kitty-image[data-alignment="right"] {
-  margin-left: auto;
-  margin-right: 0;
-}
-
-
-/* El título pertenece al bloque */
-
-.ProseMirror figure.kitty-image .kitty-image-title {
-  width: 100%;
-  margin: 0 0 0.35rem 0;
-  font-size: 0.95rem;
-  line-height: 1.2;
-  font-weight: 600;
-}
-
-
-/* La imagen ya NO se alinea por separado */
-
-.ProseMirror figure.kitty-image img {
-  width: 100%;
-  max-width: 100%;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
-
-
-/* Pie de foto */
-
-.ProseMirror figure.kitty-image .kitty-image-caption {
-  width: 100%;
-  margin: 0.35rem 0 0 0;
-  font-size: 0.82rem;
-  line-height: 1.2;
-  color: #666;
-}
 /* ==========================================================================
    MODAL DE VISTA PREVIA
    ========================================================================== */
@@ -1091,12 +1013,25 @@ body {
   }
 }
 
-/* =========================================================
-   IMÁGENES EDITORIALES KITTY OWEN
-   Título + imagen + pie de foto
+//* =========================================================
+   IMÁGENES DENTRO DEL EDITOR
    ========================================================= */
 
-.kitty-image {
+.ProseMirror img {
+  display: block;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+
+/* =========================================================
+   IMÁGENES EDITORIALES KITTY OWEN
+   El figure controla título + imagen + pie como una unidad
+   ========================================================= */
+
+.ProseMirror figure.kitty-image {
   display: flex;
   flex-direction: column;
   margin-top: 1.5rem;
@@ -1105,44 +1040,47 @@ body {
   max-width: 100%;
 }
 
-/* Tamaños */
-.kitty-image[data-size="small"] {
-  width: 320px;
-  max-width: 100%;
+
+/* Tamaño de toda la pieza editorial */
+
+.ProseMirror figure.kitty-image[data-size="small"] {
+  width: 35%;
 }
 
-.kitty-image[data-size="medium"] {
-  width: 600px;
-  max-width: 100%;
+.ProseMirror figure.kitty-image[data-size="medium"] {
+  width: 60%;
 }
 
-.kitty-image[data-size="large"] {
-  width: 800px;
-  max-width: 100%;
+.ProseMirror figure.kitty-image[data-size="large"] {
+  width: 85%;
 }
 
-.kitty-image[data-size="full"] {
+.ProseMirror figure.kitty-image[data-size="full"] {
   width: 100%;
 }
 
-/* Alineación de toda la pieza editorial */
-.kitty-image[data-alignment="left"] {
+
+/* Alineación de TODA la pieza */
+
+.ProseMirror figure.kitty-image[data-alignment="left"] {
   margin-left: 0;
   margin-right: auto;
 }
 
-.kitty-image[data-alignment="center"] {
+.ProseMirror figure.kitty-image[data-alignment="center"] {
   margin-left: auto;
   margin-right: auto;
 }
 
-.kitty-image[data-alignment="right"] {
+.ProseMirror figure.kitty-image[data-alignment="right"] {
   margin-left: auto;
   margin-right: 0;
 }
 
-/* TÍTULO */
-.kitty-image-title {
+
+/* Título */
+
+.ProseMirror figure.kitty-image .kitty-image-title {
   width: 100%;
   margin: 0 0 0.35rem 0;
   font-size: 0.95rem;
@@ -1150,17 +1088,20 @@ body {
   font-weight: 600;
 }
 
-/* IMAGEN */
-.kitty-image img {
-  display: block;
+
+/* Imagen */
+
+.ProseMirror figure.kitty-image img {
   width: 100%;
+  max-width: 100%;
   height: auto;
-  margin: 0;
-  border-radius: 10px;
+  margin: 0 !important;
 }
 
-/* PIE DE FOTO */
-.kitty-image-caption {
+
+/* Pie de foto */
+
+.ProseMirror figure.kitty-image .kitty-image-caption {
   width: 100%;
   margin: 0.35rem 0 0 0;
   font-size: 0.82rem;
