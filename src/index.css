@@ -711,7 +711,10 @@ body {
   margin-bottom: 1.5rem;
 }
 
-/* TAMAÑOS DE IMAGEN */
+
+/* =========================================================
+   IMÁGENES DENTRO DEL EDITOR
+   ========================================================= */
 
 .ProseMirror img[data-size="small"] {
   width: 35%;
@@ -733,7 +736,10 @@ body {
   max-width: 100%;
 }
 
-/* ALINEACIÓN */
+
+/* =========================================================
+   ALINEACIÓN DE IMÁGENES NORMALES
+   ========================================================= */
 
 .ProseMirror img[data-alignment="left"] {
   margin-left: 0;
@@ -749,18 +755,90 @@ body {
   margin-left: auto;
   margin-right: 0;
 }
-/* PIE DE HOJA: ESTADÍSTICAS */
-.editor-footer-stats {
-  margin-top: auto;
-  padding-top: 2rem;
+
+
+/* =========================================================
+   IMÁGENES EDITORIALES KITTY OWEN
+   El figure controla título + imagen + pie como una unidad
+   ========================================================= */
+
+.ProseMirror figure.kitty-image {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  border-top: 1px solid var(--border-subtle);
+  flex-direction: column;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 0;
+  max-width: 100%;
 }
 
+
+/* Tamaño de toda la pieza editorial */
+
+.ProseMirror figure.kitty-image[data-size="small"] {
+  width: 35%;
+}
+
+.ProseMirror figure.kitty-image[data-size="medium"] {
+  width: 60%;
+}
+
+.ProseMirror figure.kitty-image[data-size="large"] {
+  width: 85%;
+}
+
+.ProseMirror figure.kitty-image[data-size="full"] {
+  width: 100%;
+}
+
+
+/* Alineación de TODA la pieza */
+
+.ProseMirror figure.kitty-image[data-alignment="left"] {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.ProseMirror figure.kitty-image[data-alignment="center"] {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ProseMirror figure.kitty-image[data-alignment="right"] {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+
+/* El título pertenece al bloque */
+
+.ProseMirror figure.kitty-image .kitty-image-title {
+  width: 100%;
+  margin: 0 0 0.35rem 0;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+
+/* La imagen ya NO se alinea por separado */
+
+.ProseMirror figure.kitty-image img {
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+
+/* Pie de foto */
+
+.ProseMirror figure.kitty-image .kitty-image-caption {
+  width: 100%;
+  margin: 0.35rem 0 0 0;
+  font-size: 0.82rem;
+  line-height: 1.2;
+  color: #666;
+}
 /* ==========================================================================
    MODAL DE VISTA PREVIA
    ========================================================================== */
