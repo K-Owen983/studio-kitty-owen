@@ -1013,25 +1013,12 @@ body {
   }
 }
 
-//* =========================================================
-   IMÁGENES DENTRO DEL EDITOR
-   ========================================================= */
-
-.ProseMirror img {
-  display: block;
-  height: auto;
-  border-radius: 8px;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-
 /* =========================================================
    IMÁGENES EDITORIALES KITTY OWEN
-   El figure controla título + imagen + pie como una unidad
+   Título + imagen + pie de foto
    ========================================================= */
 
-.ProseMirror figure.kitty-image {
+.kitty-image {
   display: flex;
   flex-direction: column;
   margin-top: 1.5rem;
@@ -1040,47 +1027,44 @@ body {
   max-width: 100%;
 }
 
-
-/* Tamaño de toda la pieza editorial */
-
-.ProseMirror figure.kitty-image[data-size="small"] {
-  width: 35%;
+/* Tamaños */
+.kitty-image[data-size="small"] {
+  width: 320px;
+  max-width: 100%;
 }
 
-.ProseMirror figure.kitty-image[data-size="medium"] {
-  width: 60%;
+.kitty-image[data-size="medium"] {
+  width: 600px;
+  max-width: 100%;
 }
 
-.ProseMirror figure.kitty-image[data-size="large"] {
-  width: 85%;
+.kitty-image[data-size="large"] {
+  width: 800px;
+  max-width: 100%;
 }
 
-.ProseMirror figure.kitty-image[data-size="full"] {
+.kitty-image[data-size="full"] {
   width: 100%;
 }
 
-
-/* Alineación de TODA la pieza */
-
-.ProseMirror figure.kitty-image[data-alignment="left"] {
+/* Alineación de toda la pieza editorial */
+.kitty-image[data-alignment="left"] {
   margin-left: 0;
   margin-right: auto;
 }
 
-.ProseMirror figure.kitty-image[data-alignment="center"] {
+.kitty-image[data-alignment="center"] {
   margin-left: auto;
   margin-right: auto;
 }
 
-.ProseMirror figure.kitty-image[data-alignment="right"] {
+.kitty-image[data-alignment="right"] {
   margin-left: auto;
   margin-right: 0;
 }
 
-
-/* Título */
-
-.ProseMirror figure.kitty-image .kitty-image-title {
+/* TÍTULO */
+.kitty-image-title {
   width: 100%;
   margin: 0 0 0.35rem 0;
   font-size: 0.95rem;
@@ -1088,20 +1072,17 @@ body {
   font-weight: 600;
 }
 
-
-/* Imagen */
-
-.ProseMirror figure.kitty-image img {
+/* IMAGEN */
+.kitty-image img {
+  display: block;
   width: 100%;
-  max-width: 100%;
   height: auto;
-  margin: 0 !important;
+  margin: 0;
+  border-radius: 10px;
 }
 
-
-/* Pie de foto */
-
-.ProseMirror figure.kitty-image .kitty-image-caption {
+/* PIE DE FOTO */
+.kitty-image-caption {
   width: 100%;
   margin: 0.35rem 0 0 0;
   font-size: 0.82rem;
