@@ -976,78 +976,96 @@ body {
 }
 
 /* =========================================================
-   IMÁGENES EDITORIALES KITTY OWEN
-   Título + imagen + pie de foto
+   UNIDAD EDITORIAL KITTY OWEN (FIGURE)
+   Título + Imagen + Pie de foto
    ========================================================= */
 
-.kitty-image {
+/* Contenedor principal de la pieza editorial */
+.ProseMirror figure.kitty-image {
   display: flex;
   flex-direction: column;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 1.75rem;
+  margin-bottom: 1.75rem;
   padding: 0;
+  box-sizing: border-box;
   max-width: 100%;
 }
 
-/* Tamaños */
-.kitty-image[data-size="small"] {
-  width: 320px;
-  max-width: 100%;
+/* ---------------------------------------------------------
+   1. TAMAÑOS (Se aplican a toda la unidad editorial)
+   --------------------------------------------------------- */
+.ProseMirror figure.kitty-image[data-size="small"] {
+  width: 35%;
 }
 
-.kitty-image[data-size="medium"] {
-  width: 600px;
-  max-width: 100%;
+.ProseMirror figure.kitty-image[data-size="medium"] {
+  width: 60%;
 }
 
-.kitty-image[data-size="large"] {
-  width: 800px;
-  max-width: 100%;
+.ProseMirror figure.kitty-image[data-size="large"] {
+  width: 85%;
 }
 
-.kitty-image[data-size="full"] {
+.ProseMirror figure.kitty-image[data-size="full"] {
   width: 100%;
 }
 
-/* Alineación de toda la pieza editorial */
-.kitty-image[data-alignment="left"] {
+/* ---------------------------------------------------------
+   2. ALINEACIÓN (Mueve el bloque completo: título + img + pie)
+   --------------------------------------------------------- */
+.ProseMirror figure.kitty-image[data-alignment="left"] {
   margin-left: 0;
   margin-right: auto;
 }
 
-.kitty-image[data-alignment="center"] {
+.ProseMirror figure.kitty-image[data-alignment="center"] {
   margin-left: auto;
   margin-right: auto;
 }
 
-.kitty-image[data-alignment="right"] {
+.ProseMirror figure.kitty-image[data-alignment="right"] {
   margin-left: auto;
   margin-right: 0;
 }
 
-/* TÍTULO */
-.kitty-image-title {
+/* ---------------------------------------------------------
+   3. ESTRUCTURA INTERNA
+   --------------------------------------------------------- */
+
+/* Título (Encima de la imagen) */
+.ProseMirror figure.kitty-image .kitty-image-title,
+.ProseMirror figure.kitty-image figcaption.kitty-image-title {
   width: 100%;
-  margin: 0 0 0.35rem 0;
+  margin: 0 0 0.4rem 0;
   font-size: 0.95rem;
-  line-height: 1.2;
+  line-height: 1.3;
   font-weight: 600;
+  color: var(--text-primary);
 }
 
-/* IMAGEN */
-.kitty-image img {
+/* Imagen (Se adapta al 100% del contenedor figure) */
+.ProseMirror figure.kitty-image img {
   display: block;
   width: 100%;
   height: auto;
-  margin: 0;
-  border-radius: 10px;
+  margin: 0 !important; /* Anula márgenes genéricos de .ProseMirror img */
+  border-radius: 8px;
 }
 
-/* PIE DE FOTO */
-.kitty-image-caption {
+/* Pie de foto (Debajo de la imagen, espacio sencillo) */
+.ProseMirror figure.kitty-image .kitty-image-caption,
+.ProseMirror figure.kitty-image figcaption.kitty-image-caption {
   width: 100%;
-  margin: 0.35rem 0 0 0;
-  font-size: 0.82rem;
-  line-height: 1.2;
-  color: #666;
+  margin: 0.4rem 0 0 0;
+  font-size: 0.85rem;
+  line-height: 1.3; /* Interlineado sencillo */
+  color: var(--text-secondary);
+}
+
+/* ---------------------------------------------------------
+   4. OCULTAR ESPACIOS RESERVADOS CUANDO NO HAY TEXTO
+   --------------------------------------------------------- */
+.ProseMirror figure.kitty-image .kitty-image-title:empty,
+.ProseMirror figure.kitty-image .kitty-image-caption:empty {
+  display: none;
 }
