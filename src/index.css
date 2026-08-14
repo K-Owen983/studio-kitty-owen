@@ -1035,31 +1035,36 @@ body {
 /* Título (Encima de la imagen) */
 .ProseMirror figure.kitty-image .kitty-image-title,
 .ProseMirror figure.kitty-image figcaption.kitty-image-title {
+  order: 1;
   width: 100%;
   margin: 0 0 0.4rem 0;
   font-size: 0.95rem;
   line-height: 1.3;
   font-weight: 600;
   color: var(--text-primary);
-}
+  }
 
 /* Imagen (Se adapta al 100% del contenedor figure) */
 .ProseMirror figure.kitty-image img {
+  order: 2;
   display: block;
   width: 100%;
   height: auto;
   margin: 0 !important; /* Anula márgenes genéricos de .ProseMirror img */
   border-radius: 8px;
+  width: 100% !important;
 }
 
 /* Pie de foto (Debajo de la imagen, espacio sencillo) */
 .ProseMirror figure.kitty-image .kitty-image-caption,
 .ProseMirror figure.kitty-image figcaption.kitty-image-caption {
+  order: 3;
   width: 100%;
   margin: 0.4rem 0 0 0;
   font-size: 0.85rem;
   line-height: 1.3; /* Interlineado sencillo */
   color: var(--text-secondary);
+  order: 3;
 }
 
 /* ---------------------------------------------------------
