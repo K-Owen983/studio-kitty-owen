@@ -9,7 +9,8 @@ const KittyImage = Image.extend({
 
       caption: {
         default: '',
-        parseHTML: element => element.getAttribute('data-caption') || '',
+        parseHTML: element =>
+          element.getAttribute('data-caption') || '',
         renderHTML: attributes => {
           if (!attributes.caption) {
             return {};
@@ -23,7 +24,8 @@ const KittyImage = Image.extend({
 
       size: {
         default: 'medium',
-        parseHTML: element => element.getAttribute('data-size') || 'medium',
+        parseHTML: element =>
+          element.getAttribute('data-size') || 'medium',
         renderHTML: attributes => ({
           'data-size': attributes.size,
         }),
@@ -31,7 +33,8 @@ const KittyImage = Image.extend({
 
       alignment: {
         default: 'center',
-        parseHTML: element => element.getAttribute('data-alignment') || 'center',
+        parseHTML: element =>
+          element.getAttribute('data-alignment') || 'center',
         renderHTML: attributes => ({
           'data-alignment': attributes.alignment,
         }),
@@ -43,23 +46,16 @@ const KittyImage = Image.extend({
     const {
       title,
       caption,
-      size,
-      alignment,
+      size = 'medium',
+      alignment = 'center',
       ...imageAttributes
     } = HTMLAttributes;
 
-    const children = [
-      [
-        'img',
-        {
-          ...imageAttributes,
-          ...(title ? { title } : {}),
-        },
-      ],
-    ];
+    const content = [];
 
+    // TÍTULO: solo aparece si fue escrito
     if (title) {
-      children.push([
+      content.push([
         'div',
         {
           class: 'kitty-image-title',
@@ -68,9 +64,20 @@ const KittyImage = Image.extend({
       ]);
     }
 
+    // IMAGEN
+    content.push([
+      'img',
+      {
+        ...imageAttributes,
+        'data-size': size,
+        'data-alignment': alignment,
+      },
+    ]);
+
+    // PIE DE FOTO: solo aparece si fue escrito
     if (caption) {
-      children.push([
-        'figcaption',
+      content.push([
+        'div',
         {
           class: 'kitty-image-caption',
         },
@@ -79,15 +86,15 @@ const KittyImage = Image.extend({
     }
 
     return [
-      'figure',
+      'div',
       {
-        class: 'kitty-image',
+        class: `kitty-image kitty-image-${alignment}`,
         'data-size': size,
         'data-alignment': alignment,
       },
-      ...children,
+      ...content,
     ];
   },
 });
 
-export default KittyImage;
+export default KittyImage;s
