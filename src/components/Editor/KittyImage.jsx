@@ -1,42 +1,4 @@
 import Image from '@tiptap/extension-image';
-import { NodeViewWrapper, ReactNodeViewRenderer } from '@tiptap/react';
-
-function KittyImageView({ node }) {
-  const {
-    src,
-    alt,
-    title,
-    caption,
-    size,
-    alignment,
-  } = node.attrs;
-
-  return (
-    <NodeViewWrapper
-      as="figure"
-      className="kitty-image"
-      data-size={size}
-      data-alignment={alignment}
-    >
-      {title && (
-        <div className="kitty-image-title">
-          {title}
-        </div>
-      )}
-
-      <img
-        src={src}
-        alt={alt || ''}
-      />
-
-      {caption && (
-        <figcaption className="kitty-image-caption">
-          {caption}
-        </figcaption>
-      )}
-    </NodeViewWrapper>
-  );
-}
 
 const KittyImage = Image.extend({
   name: 'image',
@@ -47,8 +9,7 @@ const KittyImage = Image.extend({
 
       caption: {
         default: '',
-        parseHTML: element =>
-          element.getAttribute('data-caption') || '',
+        parseHTML: element => element.getAttribute('data-caption') || '',
         renderHTML: attributes => {
           if (!attributes.caption) {
             return {};
@@ -62,8 +23,7 @@ const KittyImage = Image.extend({
 
       size: {
         default: 'medium',
-        parseHTML: element =>
-          element.getAttribute('data-size') || 'medium',
+        parseHTML: element => element.getAttribute('data-size') || 'medium',
         renderHTML: attributes => ({
           'data-size': attributes.size,
         }),
@@ -71,17 +31,12 @@ const KittyImage = Image.extend({
 
       alignment: {
         default: 'center',
-        parseHTML: element =>
-          element.getAttribute('data-alignment') || 'center',
+        parseHTML: element => element.getAttribute('data-alignment') || 'center',
         renderHTML: attributes => ({
           'data-alignment': attributes.alignment,
         }),
       },
     };
-  },
-
-  addNodeView() {
-    return ReactNodeViewRenderer(KittyImageView);
   },
 
   renderHTML({ HTMLAttributes }) {
@@ -93,7 +48,15 @@ const KittyImage = Image.extend({
       ...imageAttributes
     } = HTMLAttributes;
 
-    const children = [];
+    const children = [
+      [
+        'img',
+        {
+          ...imageAttributes,
+          ...(title ? { title } : {}),
+        },
+      ],
+    ];
 
     if (title) {
       children.push([
@@ -104,14 +67,6 @@ const KittyImage = Image.extend({
         title,
       ]);
     }
-
-    children.push([
-      'img',
-      {
-        ...imageAttributes,
-        ...(title ? {} : {}),
-      },
-    ]);
 
     if (caption) {
       children.push([
@@ -136,3 +91,4 @@ const KittyImage = Image.extend({
 });
 
 export default KittyImage;
+
