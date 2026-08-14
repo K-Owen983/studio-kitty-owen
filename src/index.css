@@ -1012,3 +1012,80 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* =========================================================
+   IMÁGENES EDITORIALES KITTY OWEN
+   Título + imagen + pie de foto
+   ========================================================= */
+
+.kitty-image {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 0;
+  max-width: 100%;
+}
+
+/* Tamaños */
+.kitty-image[data-size="small"] {
+  width: 320px;
+  max-width: 100%;
+}
+
+.kitty-image[data-size="medium"] {
+  width: 600px;
+  max-width: 100%;
+}
+
+.kitty-image[data-size="large"] {
+  width: 800px;
+  max-width: 100%;
+}
+
+.kitty-image[data-size="full"] {
+  width: 100%;
+}
+
+/* Alineación de toda la pieza editorial */
+.kitty-image[data-alignment="left"] {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.kitty-image[data-alignment="center"] {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.kitty-image[data-alignment="right"] {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* TÍTULO */
+.kitty-image-title {
+  width: 100%;
+  margin: 0 0 0.35rem 0;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+/* IMAGEN */
+.kitty-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border-radius: 10px;
+}
+
+/* PIE DE FOTO */
+.kitty-image-caption {
+  width: 100%;
+  margin: 0.35rem 0 0 0;
+  font-size: 0.82rem;
+  line-height: 1.2;
+  color: #666;
+}
