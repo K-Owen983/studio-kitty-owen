@@ -224,6 +224,8 @@ export default function FixedToolbar({
       caption: config.caption,
       size: config.size,
       alignment: config.alignment
+      titleAlignment: config.titleAlignment,
+  captionAlignment: config.captionAlignment
     })
     .run();
 
