@@ -819,6 +819,7 @@ body {
 
 .image-config-modal {
   width: min(620px, 100%);
+  box-sizing: border-box;
   max-height: 90vh;
   overflow-y: auto;
 
