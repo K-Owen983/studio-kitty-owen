@@ -20,7 +20,9 @@ const [captionAlignment, setCaptionAlignment] = useState('center');
       caption,
       altText,
       size,
-      alignment
+      alignment,
+      titleAlignment,
+captionAlignment
     });
   };
 
