@@ -39,6 +39,22 @@ const KittyImage = Image.extend({
     };
   },
 
+  titleAlignment: {
+  default: 'center',
+  parseHTML: element => element.getAttribute('data-title-alignment') || 'center',
+  renderHTML: attributes => ({
+    'data-title-alignment': attributes.titleAlignment,
+  }),
+},
+
+captionAlignment: {
+  default: 'center',
+  parseHTML: element => element.getAttribute('data-caption-alignment') || 'center',
+  renderHTML: attributes => ({
+    'data-caption-alignment': attributes.captionAlignment,
+  }),
+},
+
   renderHTML({ HTMLAttributes }) {
     const {
       title,
