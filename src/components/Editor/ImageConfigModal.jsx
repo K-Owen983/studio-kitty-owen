@@ -72,12 +72,6 @@ React.useEffect(() => {
       reader.onload = () => {
   setCurrentImageSrc(reader.result);
   setFileName(file.name);
-
-  // La nueva imagen no debe heredar
-  // la información de la imagen anterior.
-  setTitle('');
-  setCaption('');
-  setAltText('');
 };
       reader.readAsDataURL(file);
     };
