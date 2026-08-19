@@ -11,7 +11,8 @@ export default function ImageConfigModal({
   const [altText, setAltText] = useState('');
   const [size, setSize] = useState('medium');
   const [alignment, setAlignment] = useState('center');
-  
+  const [titleAlignment, setTitleAlignment] = useState('center');
+const [captionAlignment, setCaptionAlignment] = useState('center');
 
   const handleInsert = () => {
     onInsert({
