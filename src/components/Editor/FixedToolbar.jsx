@@ -249,6 +249,7 @@ const editImage = () => {
             {imageConfig && (
         <ImageConfigModal
           imageSrc={imageConfig.src}
+          initialConfig={imageConfig}
           onCancel={() => setImageConfig(null)}
           onInsert={(config) => {
   if (imageConfig.isEditing && imageConfig.position !== undefined) {
@@ -257,7 +258,7 @@ const editImage = () => {
       .focus()
       .command(({ tr }) => {
         tr.setNodeMarkup(imageConfig.position, undefined, {
-          src: imageConfig.src,
+          src: config.src,
           alt: config.altText,
           title: config.title,
           caption: config.caption,
