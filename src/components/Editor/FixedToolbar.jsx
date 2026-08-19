@@ -100,7 +100,8 @@ const editImage = () => {
     position: selection.from,
   });
 };
-  return (
+ return (
+  <>
     <div className="fixed-editor-toolbar">
       {/* SECCIÓN IZQUIERDA: BOTÓN VOLVER Y EDICIÓN DE FORMATO */}
       <div className="toolbar-group">
@@ -246,10 +247,11 @@ const editImage = () => {
           <Send size={15} /> Publicar
         </button>
       </div>
-            {imageConfig && (
+             </div>
+              {imageConfig && (
         <ImageConfigModal
           imageSrc={imageConfig.src}
-          initialConfig={imageConfig}
+          
           onCancel={() => setImageConfig(null)}
           onInsert={(config) => {
   if (imageConfig.isEditing && imageConfig.position !== undefined) {
@@ -258,7 +260,7 @@ const editImage = () => {
       .focus()
       .command(({ tr }) => {
         tr.setNodeMarkup(imageConfig.position, undefined, {
-          src: config.src,
+          src: imageConfig.src,
           alt: config.altText,
           title: config.title,
           caption: config.caption,
@@ -292,6 +294,6 @@ const editImage = () => {
 }}
          />
       )}
-    </div>
+
   );
 }
