@@ -71,7 +71,7 @@ export default function ImageConfigModal({
 
   const handleInsert = () => {
   onInsert({
-    src: imageSrc,
+    src: currentImageSrc,
     title,
     caption,
     altText,
