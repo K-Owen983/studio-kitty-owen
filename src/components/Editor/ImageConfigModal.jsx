@@ -82,6 +82,41 @@ captionAlignment
               placeholder="Texto que aparecerá debajo de la imagen"
             />
           </div>
+                    <div className="image-config-row">
+
+            <div className="image-config-field">
+              <label htmlFor="title-alignment">
+                ↔️ Alineación del título
+              </label>
+
+              <select
+                id="title-alignment"
+                value={titleAlignment}
+                onChange={(e) => setTitleAlignment(e.target.value)}
+              >
+                <option value="left">Izquierda</option>
+                <option value="center">Centro</option>
+                <option value="right">Derecha</option>
+              </select>
+            </div>
+
+            <div className="image-config-field">
+              <label htmlFor="caption-alignment">
+                ↔️ Alineación del pie
+              </label>
+
+              <select
+                id="caption-alignment"
+                value={captionAlignment}
+                onChange={(e) => setCaptionAlignment(e.target.value)}
+              >
+                <option value="left">Izquierda</option>
+                <option value="center">Centro</option>
+                <option value="right">Derecha</option>
+              </select>
+            </div>
+
+          </div>
 
           <div className="image-config-field">
             <label htmlFor="image-alt">
