@@ -70,19 +70,17 @@ export default function ImageConfigModal({
   };
 
   const handleInsert = () => {
-    onInsert({
-      src: currentImageSrc,
-      fileName,
-      title,
-      caption,
-      altText,
-      size,
-      alignment,
-      titleAlignment,
-      captionAlignment,
-      isEditing
-    });
-  };
+  onInsert({
+    src: imageSrc,
+    title,
+    caption,
+    altText,
+    size,
+    alignment,
+    titleAlignment,
+    captionAlignment
+  });
+};
 
   return (
     <div className="image-config-overlay">
