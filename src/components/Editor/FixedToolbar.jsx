@@ -217,7 +217,7 @@ export default function FixedToolbar({
   editor
     .chain()
     .focus()
-    setImage({
+    .setImage({
   src: imageConfig.src,
   alt: config.altText,
   title: config.title,
