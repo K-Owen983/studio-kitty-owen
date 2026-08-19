@@ -165,6 +165,40 @@ const editImage = () => {
         </button>
 
         <div className="toolbar-divider" />
+{/* ALINEACIÓN DE TEXTO */}
+<button
+  onClick={() => editor.chain().focus().setTextAlign('left').run()}
+  className={`tb-btn ${editor.isActive({ textAlign: 'left' }) ? 'is-active' : ''}`}
+  title="Alinear a la izquierda"
+>
+  <AlignLeft size={16} />
+</button>
+
+<button
+  onClick={() => editor.chain().focus().setTextAlign('center').run()}
+  className={`tb-btn ${editor.isActive({ textAlign: 'center' }) ? 'is-active' : ''}`}
+  title="Centrar"
+>
+  <AlignCenter size={16} />
+</button>
+
+<button
+  onClick={() => editor.chain().focus().setTextAlign('right').run()}
+  className={`tb-btn ${editor.isActive({ textAlign: 'right' }) ? 'is-active' : ''}`}
+  title="Alinear a la derecha"
+>
+  <AlignRight size={16} />
+</button>
+
+<button
+  onClick={() => editor.chain().focus().setTextAlign('justify').run()}
+  className={`tb-btn ${editor.isActive({ textAlign: 'justify' }) ? 'is-active' : ''}`}
+  title="Justificar"
+>
+  <AlignJustify size={16} />
+</button>
+
+<div className="toolbar-divider" />
 
         {/* LISTAS Y BLOQUES */}
         <button
