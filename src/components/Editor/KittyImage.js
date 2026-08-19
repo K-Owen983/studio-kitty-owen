@@ -42,9 +42,9 @@ const KittyImage = Image.extend({
   renderHTML({ HTMLAttributes }) {
     const {
       title,
-      caption,
-      size,
-      alignment,
+      'data-caption': caption,
+'data-size': size,
+'data-alignment': alignment,
       ...imageAttributes
     } = HTMLAttributes;
 
