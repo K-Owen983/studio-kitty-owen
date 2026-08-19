@@ -1,28 +1,86 @@
 import React, { useState } from 'react';
-import { X } from 'lucide-react';
+import { X, Upload } from 'lucide-react';
 
 export default function ImageConfigModal({
   imageSrc,
+  initialConfig,
   onCancel,
   onInsert
 }) {
-  const [title, setTitle] = useState('');
-  const [caption, setCaption] = useState('');
-  const [altText, setAltText] = useState('');
-  const [size, setSize] = useState('medium');
-  const [alignment, setAlignment] = useState('center');
-  const [titleAlignment, setTitleAlignment] = useState('center');
-const [captionAlignment, setCaptionAlignment] = useState('center');
+  const [currentImageSrc, setCurrentImageSrc] = useState(
+    imageSrc || ''
+  );
+
+  const [fileName, setFileName] = useState(
+    initialConfig?.fileName || ''
+  );
+
+  const [title, setTitle] = useState(
+    initialConfig?.title || ''
+  );
+
+  const [caption, setCaption] = useState(
+    initialConfig?.caption || ''
+  );
+
+  const [altText, setAltText] = useState(
+    initialConfig?.altText || ''
+  );
+
+  const [size, setSize] = useState(
+    initialConfig?.size || 'medium'
+  );
+
+  const [alignment, setAlignment] = useState(
+    initialConfig?.alignment || 'center'
+  );
+
+  const [titleAlignment, setTitleAlignment] = useState(
+    initialConfig?.titleAlignment || 'center'
+  );
+
+  const [captionAlignment, setCaptionAlignment] = useState(
+    initialConfig?.captionAlignment || 'center'
+  );
+
+  const isEditing = initialConfig?.isEditing || false;
+
+  const handleChangeImage = () => {
+    const input = document.createElement('input');
+
+    input.type = 'file';
+    input.accept = 'image/*';
+
+    input.onchange = (event) => {
+      const file = event.target.files?.[0];
+
+      if (!file) return;
+
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        setCurrentImageSrc(reader.result);
+        setFileName(file.name);
+      };
+
+      reader.readAsDataURL(file);
+    };
+
+    input.click();
+  };
 
   const handleInsert = () => {
     onInsert({
+      src: currentImageSrc,
+      fileName,
       title,
       caption,
       altText,
       size,
       alignment,
       titleAlignment,
-captionAlignment
+      captionAlignment,
+      isEditing
     });
   };
 
@@ -32,8 +90,15 @@ captionAlignment
 
         <div className="image-config-header">
           <div>
-            <h2>Configurar imagen</h2>
-            <p>Define cómo aparecerá la imagen en tu publicación.</p>
+            <h2>
+              {isEditing ? 'Editar imagen' : 'Configurar imagen'}
+            </h2>
+
+            <p>
+              {isEditing
+                ? 'Modifica la imagen y sus características.'
+                : 'Define cómo aparecerá la imagen en tu publicación.'}
+            </p>
           </div>
 
           <button
@@ -48,9 +113,26 @@ captionAlignment
 
         <div className="image-config-preview">
           <img
-            src={imageSrc}
+            src={currentImageSrc}
             alt={altText || 'Vista previa de la imagen'}
           />
+        </div>
+
+        <div className="image-config-change-image">
+          <button
+            type="button"
+            onClick={handleChangeImage}
+            className="btn btn-secondary"
+          >
+            <Upload size={16} />
+            Cambiar imagen
+          </button>
+
+          {fileName && (
+            <span className="image-config-file-name">
+              {fileName}
+            </span>
+          )}
         </div>
 
         <div className="image-config-fields">
@@ -82,7 +164,8 @@ captionAlignment
               placeholder="Texto que aparecerá debajo de la imagen"
             />
           </div>
-                    <div className="image-config-row">
+
+          <div className="image-config-row">
 
             <div className="image-config-field">
               <label htmlFor="title-alignment">
@@ -172,6 +255,7 @@ captionAlignment
         </div>
 
         <div className="image-config-actions">
+
           <button
             type="button"
             onClick={onCancel}
@@ -185,8 +269,9 @@ captionAlignment
             onClick={handleInsert}
             className="btn btn-primary"
           >
-            Insertar imagen
+            {isEditing ? 'Guardar cambios' : 'Insertar imagen'}
           </button>
+
         </div>
 
       </div>
