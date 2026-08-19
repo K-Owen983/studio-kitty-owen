@@ -173,6 +173,13 @@ const editImage = () => {
         >
           <ListOrdered size={16} />
         </button>
+        <button
+  onClick={editImage}
+  className="tb-btn"
+  title="Editar imagen"
+>
+  <Pencil size={16} />
+</button>
 
         <button
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
