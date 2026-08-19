@@ -57,12 +57,14 @@ captionAlignment: {
 
   renderHTML({ HTMLAttributes }) {
     const {
-      title,
-      'data-caption': caption,
-'data-size': size,
-'data-alignment': alignment,
-      ...imageAttributes
-    } = HTMLAttributes;
+  title,
+  'data-caption': caption,
+  'data-size': size,
+  'data-alignment': alignment,
+  'data-title-alignment': titleAlignment,
+  'data-caption-alignment': captionAlignment,
+  ...imageAttributes
+} = HTMLAttributes;
 
     const children = [
       [
