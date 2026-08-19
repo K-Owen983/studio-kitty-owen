@@ -29,30 +29,30 @@ const KittyImage = Image.extend({
         }),
       },
 
-      alignment: {
-        default: 'center',
-        parseHTML: element => element.getAttribute('data-alignment') || 'center',
-        renderHTML: attributes => ({
-          'data-alignment': attributes.alignment,
-        }),
-      },
-    };
-  },
+          alignment: {
+      default: 'center',
+      parseHTML: element => element.getAttribute('data-alignment') || 'center',
+      renderHTML: attributes => ({
+        'data-alignment': attributes.alignment,
+      }),
+    },
 
-  titleAlignment: {
-  default: 'center',
-  parseHTML: element => element.getAttribute('data-title-alignment') || 'center',
-  renderHTML: attributes => ({
-    'data-title-alignment': attributes.titleAlignment,
-  }),
-},
+    titleAlignment: {
+      default: 'center',
+      parseHTML: element => element.getAttribute('data-title-alignment') || 'center',
+      renderHTML: attributes => ({
+        'data-title-alignment': attributes.titleAlignment,
+      }),
+    },
 
-captionAlignment: {
-  default: 'center',
-  parseHTML: element => element.getAttribute('data-caption-alignment') || 'center',
-  renderHTML: attributes => ({
-    'data-caption-alignment': attributes.captionAlignment,
-  }),
+    captionAlignment: {
+      default: 'center',
+      parseHTML: element => element.getAttribute('data-caption-alignment') || 'center',
+      renderHTML: attributes => ({
+        'data-caption-alignment': attributes.captionAlignment,
+      }),
+    },
+  };
 },
 
   renderHTML({ HTMLAttributes }) {
