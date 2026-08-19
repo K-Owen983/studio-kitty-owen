@@ -48,6 +48,9 @@ export default function EditorView() {
   const editor = useEditor({
     extensions: [
       StarterKit,
+TextAlign.configure({
+  types: ['heading', 'paragraph'],
+}),
       Underline,
       Link.configure({ openOnClick: false }),
       KittyImage,
