@@ -10,7 +10,7 @@ import TableHeader from '@tiptap/extension-table-header';
 import TableCell from '@tiptap/extension-table-cell';
 import CodeBlock from '@tiptap/extension-code-block';
 import Placeholder from '@tiptap/extension-placeholder';
-
+import TextAlign from '@tiptap/extension-text-align';
 import FixedToolbar from './FixedToolbar';
 import CoverUploader from './CoverUploader';
 import AutoSaveIndicator from './AutoSaveIndicator';
