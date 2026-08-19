@@ -217,16 +217,16 @@ export default function FixedToolbar({
   editor
     .chain()
     .focus()
-    .setImage({
-      src: imageConfig.src,
-      alt: config.altText,
-      title: config.title,
-      caption: config.caption,
-      size: config.size,
-      alignment: config.alignment
-      titleAlignment: config.titleAlignment,
+    setImage({
+  src: imageConfig.src,
+  alt: config.altText,
+  title: config.title,
+  caption: config.caption,
+  size: config.size,
+  alignment: config.alignment,
+  titleAlignment: config.titleAlignment,
   captionAlignment: config.captionAlignment
-    })
+})
     .run();
 
   setImageConfig(null);
