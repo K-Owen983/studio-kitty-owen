@@ -873,32 +873,31 @@ body {
 
 .image-config-preview {
   width: 100%;
-  max-height: 280px;
+  height: 280px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  overflow: hidden;
-
   background: #f7f7f8;
   border-radius: 12px;
 
   margin-bottom: 22px;
+
+  overflow: hidden;
 }
 
 .image-config-preview img {
   display: block;
 
   max-width: 100%;
-  max-height: 280px;
+  max-height: 100%;
 
   width: auto;
   height: auto;
 
   object-fit: contain;
 }
-
 /* Campos */
 
 .image-config-fields {
@@ -1073,33 +1072,4 @@ body {
 .ProseMirror figure.kitty-image .kitty-image-title:empty,
 .ProseMirror figure.kitty-image .kitty-image-caption:empty {
   display: none;
-}
-/* ---------------------------------------------------------
-   5. ALINEACIÓN INDEPENDIENTE DE TÍTULO Y PIE
-   --------------------------------------------------------- */
-
-/* Título */
-.ProseMirror figure.kitty-image .kitty-image-title[data-alignment="left"] {
-  text-align: left;
-}
-
-.ProseMirror figure.kitty-image .kitty-image-title[data-alignment="center"] {
-  text-align: center;
-}
-
-.ProseMirror figure.kitty-image .kitty-image-title[data-alignment="right"] {
-  text-align: right;
-}
-
-/* Pie de foto */
-.ProseMirror figure.kitty-image .kitty-image-caption[data-alignment="left"] {
-  text-align: left;
-}
-
-.ProseMirror figure.kitty-image .kitty-image-caption[data-alignment="center"] {
-  text-align: center;
-}
-
-.ProseMirror figure.kitty-image .kitty-image-caption[data-alignment="right"] {
-  text-align: right;
 }
