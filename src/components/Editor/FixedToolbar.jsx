@@ -260,7 +260,7 @@ const editImage = () => {
       .focus()
       .command(({ tr }) => {
         tr.setNodeMarkup(imageConfig.position, undefined, {
-          src: imageConfig.src,
+          src: config.src,
           alt: config.altText,
           title: config.title,
           caption: config.caption,
