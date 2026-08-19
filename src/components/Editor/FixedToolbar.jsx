@@ -2,7 +2,8 @@ import React from 'react';
 import {
   Bold, Italic, Underline as UnderlineIcon, Heading1, Heading2, Heading3,Pencil,
   List, ListOrdered, Quote, Link as LinkIcon, Image as ImageIcon,
-  Table as TableIcon, Code, Undo, Redo, Eye, Save, Send, ArrowLeft
+  Table as TableIcon, Code, Undo, Redo, Eye, Save, Send, ArrowLeft,
+  AlignLeft, AlignCenter, AlignRight, AlignJustify
 } from 'lucide-react';
 import ImageConfigModal from './ImageConfigModal';
 
