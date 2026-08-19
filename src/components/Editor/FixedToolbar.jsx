@@ -292,8 +292,9 @@ const editImage = () => {
 
   setImageConfig(null);
 }}
-         />
+          />
       )}
 
+    </>
   );
 }
