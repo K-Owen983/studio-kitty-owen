@@ -1074,3 +1074,32 @@ body {
 .ProseMirror figure.kitty-image .kitty-image-caption:empty {
   display: none;
 }
+/* ---------------------------------------------------------
+   5. ALINEACIÓN INDEPENDIENTE DE TÍTULO Y PIE
+   --------------------------------------------------------- */
+
+/* Título */
+.ProseMirror figure.kitty-image .kitty-image-title[data-alignment="left"] {
+  text-align: left;
+}
+
+.ProseMirror figure.kitty-image .kitty-image-title[data-alignment="center"] {
+  text-align: center;
+}
+
+.ProseMirror figure.kitty-image .kitty-image-title[data-alignment="right"] {
+  text-align: right;
+}
+
+/* Pie de foto */
+.ProseMirror figure.kitty-image .kitty-image-caption[data-alignment="left"] {
+  text-align: left;
+}
+
+.ProseMirror figure.kitty-image .kitty-image-caption[data-alignment="center"] {
+  text-align: center;
+}
+
+.ProseMirror figure.kitty-image .kitty-image-caption[data-alignment="right"] {
+  text-align: right;
+}
