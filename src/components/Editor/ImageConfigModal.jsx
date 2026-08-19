@@ -42,6 +42,17 @@ export default function ImageConfigModal({
   const [captionAlignment, setCaptionAlignment] = useState(
     initialConfig?.captionAlignment || 'center'
   );
+React.useEffect(() => {
+  setCurrentImageSrc(initialConfig?.src || imageSrc || '');
+  setFileName(initialConfig?.fileName || '');
+  setTitle(initialConfig?.title || '');
+  setCaption(initialConfig?.caption || '');
+  setAltText(initialConfig?.altText || '');
+  setSize(initialConfig?.size || 'medium');
+  setAlignment(initialConfig?.alignment || 'center');
+  setTitleAlignment(initialConfig?.titleAlignment || 'center');
+  setCaptionAlignment(initialConfig?.captionAlignment || 'center');
+}, [initialConfig, imageSrc]);
 
   const isEditing = initialConfig?.isEditing || false;
 
@@ -59,10 +70,15 @@ export default function ImageConfigModal({
       const reader = new FileReader();
 
       reader.onload = () => {
-        setCurrentImageSrc(reader.result);
-        setFileName(file.name);
-      };
+  setCurrentImageSrc(reader.result);
+  setFileName(file.name);
 
+  // La nueva imagen no debe heredar
+  // la información de la imagen anterior.
+  setTitle('');
+  setCaption('');
+  setAltText('');
+};
       reader.readAsDataURL(file);
     };
 
