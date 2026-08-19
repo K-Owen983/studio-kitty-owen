@@ -40,57 +40,23 @@ const KittyImage = Image.extend({
   },
 
   renderHTML({ HTMLAttributes }) {
-  const {
-    title,
-    'data-caption': caption,
-    'data-size': size,
-    'data-alignment': alignment,
-    ...imageAttributes
-  } = HTMLAttributes;
-
-  const children = [
-    [
-      'img',
-      {
-        ...imageAttributes,
-        ...(title ? { title } : {}),
-        ...(caption ? { 'data-caption': caption } : {}),
-        ...(size ? { 'data-size': size } : {}),
-        ...(alignment ? { 'data-alignment': alignment } : {}),
-      },
-    ],
-  ];
-
-  if (title) {
-    children.push([
-      'div',
-      {
-        class: 'kitty-image-title',
-      },
+    const {
       title,
-    ]);
-  }
-
-  if (caption) {
-    children.push([
-      'figcaption',
-      {
-        class: 'kitty-image-caption',
-      },
       caption,
-    ]);
-  }
+      size,
+      alignment,
+      ...imageAttributes
+    } = HTMLAttributes;
 
-  return [
-    'figure',
-    {
-      class: 'kitty-image',
-      'data-size': size,
-      'data-alignment': alignment,
-    },
-    ...children,
-  ];
-},
+    const children = [
+      [
+        'img',
+        {
+          ...imageAttributes,
+          ...(title ? { title } : {}),
+        },
+      ],
+    ];
 
     if (title) {
       children.push([
