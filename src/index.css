@@ -621,6 +621,9 @@ body {
   line-height: 1.8;
   color: var(--text-primary);
 }
+.preview-body .ProseMirror p {
+  margin: 0 0 1.5rem;
+}
 
 .ProseMirror p.is-editor-empty:first-child::before {
   content: attr(data-placeholder);
