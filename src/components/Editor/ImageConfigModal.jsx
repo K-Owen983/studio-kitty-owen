@@ -42,18 +42,6 @@ export default function ImageConfigModal({
   const [captionAlignment, setCaptionAlignment] = useState(
     initialConfig?.captionAlignment || 'center'
   );
-React.useEffect(() => {
-  setCurrentImageSrc(initialConfig?.src || imageSrc || '');
-  setFileName(initialConfig?.fileName || '');
-  setTitle(initialConfig?.title || '');
-  setCaption(initialConfig?.caption || '');
-  setAltText(initialConfig?.altText || '');
-  setSize(initialConfig?.size || 'medium');
-  setAlignment(initialConfig?.alignment || 'center');
-  setTitleAlignment(initialConfig?.titleAlignment || 'center');
-  setCaptionAlignment(initialConfig?.captionAlignment || 'center');
-}, [initialConfig, imageSrc]);
-
   const isEditing = initialConfig?.isEditing || false;
 
   const handleChangeImage = () => {
