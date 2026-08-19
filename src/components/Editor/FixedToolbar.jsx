@@ -66,6 +66,17 @@ export default function FixedToolbar({
 
   input.click();
 };
+const insertTable = () => {
+  editor
+    .chain()
+    .focus()
+    .insertTable({
+      rows: 3,
+      cols: 3,
+      withHeaderRow: true
+    })
+    .run();
+};
 
 const editImage = () => {
   const { selection } = editor.state;
