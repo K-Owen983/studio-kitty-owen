@@ -86,13 +86,9 @@ const editImage = () => {
     titleAlignment: node.attrs.titleAlignment || 'center',
     captionAlignment: node.attrs.captionAlignment || 'center',
     isEditing: true,
+    position: selection.from,
   });
 };
-
-  const insertTable = () => {
-    editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run();
-  };
-
   return (
     <div className="fixed-editor-toolbar">
       {/* SECCIÓN IZQUIERDA: BOTÓN VOLVER Y EDICIÓN DE FORMATO */}
@@ -174,6 +170,7 @@ const editImage = () => {
           <ListOrdered size={16} />
         </button>
         <button
+  onMouseDown={(e) => e.preventDefault()}
   onClick={editImage}
   className="tb-btn"
   title="Editar imagen"
@@ -243,24 +240,45 @@ const editImage = () => {
           imageSrc={imageConfig.src}
           onCancel={() => setImageConfig(null)}
           onInsert={(config) => {
-  editor
-    .chain()
-    .focus()
-    .setImage({
-  src: imageConfig.src,
-  alt: config.altText,
-  title: config.title,
-  caption: config.caption,
-  size: config.size,
-  alignment: config.alignment,
-  titleAlignment: config.titleAlignment,
-  captionAlignment: config.captionAlignment
-})
-    .run();
+  if (imageConfig.isEditing && imageConfig.position !== undefined) {
+    editor
+      .chain()
+      .focus()
+      .command(({ tr }) => {
+        tr.setNodeMarkup(imageConfig.position, undefined, {
+          src: imageConfig.src,
+          alt: config.altText,
+          title: config.title,
+          caption: config.caption,
+          size: config.size,
+          alignment: config.alignment,
+          titleAlignment: config.titleAlignment,
+          captionAlignment: config.captionAlignment,
+        });
+
+        return true;
+      })
+      .run();
+  } else {
+    editor
+      .chain()
+      .focus()
+      .setImage({
+        src: imageConfig.src,
+        alt: config.altText,
+        title: config.title,
+        caption: config.caption,
+        size: config.size,
+        alignment: config.alignment,
+        titleAlignment: config.titleAlignment,
+        captionAlignment: config.captionAlignment,
+      })
+      .run();
+  }
 
   setImageConfig(null);
 }}
-        />
+         />
       )}
     </div>
   );
