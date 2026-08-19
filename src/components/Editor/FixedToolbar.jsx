@@ -67,6 +67,28 @@ export default function FixedToolbar({
   input.click();
 };
 
+const editImage = () => {
+  const { selection } = editor.state;
+  const node = selection.node;
+
+  if (!node || node.type.name !== 'image') {
+    return;
+  }
+
+  setImageConfig({
+    src: node.attrs.src,
+    fileName: node.attrs.fileName || '',
+    title: node.attrs.title || '',
+    caption: node.attrs.caption || '',
+    altText: node.attrs.alt || '',
+    size: node.attrs.size || 'medium',
+    alignment: node.attrs.alignment || 'center',
+    titleAlignment: node.attrs.titleAlignment || 'center',
+    captionAlignment: node.attrs.captionAlignment || 'center',
+    isEditing: true,
+  });
+};
+
   const insertTable = () => {
     editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run();
   };
