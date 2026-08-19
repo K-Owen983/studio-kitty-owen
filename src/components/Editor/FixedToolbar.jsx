@@ -251,7 +251,7 @@ const editImage = () => {
               {imageConfig && (
         <ImageConfigModal
           imageSrc={imageConfig.src}
-          
+          initialConfig={imageConfig}
           onCancel={() => setImageConfig(null)}
           onInsert={(config) => {
   if (imageConfig.isEditing && imageConfig.position !== undefined) {
