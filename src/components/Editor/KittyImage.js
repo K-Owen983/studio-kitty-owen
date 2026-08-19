@@ -80,8 +80,9 @@ captionAlignment: {
       children.push([
         'div',
         {
-          class: 'kitty-image-title',
-        },
+  class: 'kitty-image-title',
+  'data-alignment': titleAlignment,
+},
         title,
       ]);
     }
@@ -90,8 +91,9 @@ captionAlignment: {
       children.push([
         'figcaption',
         {
-          class: 'kitty-image-caption',
-        },
+  class: 'kitty-image-caption',
+  'data-alignment': captionAlignment,
+},
         caption,
       ]);
     }
