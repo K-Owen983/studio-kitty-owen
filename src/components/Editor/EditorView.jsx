@@ -184,14 +184,55 @@ TextAlign.configure({
             <div className="meta-row-selects">
               <div className="meta-field">
                 <label>Tipo de Publicación</label>
-                <select value={type} onChange={(e) => { setType(e.target.value); setIsDirty(true); }}>
-                  <option value="Nota Estratégica">Nota Estratégica</option>
-                  <option value="Ensayo">Ensayo</option>
-                  <option value="Artículo">Artículo</option>
-                  <option value="Conferencia">Conferencia</option>
-                  <option value="Documento">Documento</option>
-                  <option value="Recurso">Recurso</option>
-                </select>
+                <div className="type-combobox">
+
+  <input
+    type="text"
+    className="type-input"
+    placeholder="Escribe un tipo de publicación..."
+    value={type}
+    onChange={(e) => {
+      setType(e.target.value);
+      setIsDirty(true);
+      setShowTypeOptions(false);
+    }}
+  />
+
+  <button
+    type="button"
+    className="type-dropdown-button"
+    onClick={() => setShowTypeOptions((prev) => !prev)}
+    aria-label="Mostrar tipos de publicación"
+  >
+    ▼
+  </button>
+
+  {showTypeOptions && (
+    <div className="type-options">
+      {[
+        'Nota Estratégica',
+        'Ensayo',
+        'Artículo',
+        'Conferencia',
+        'Documento',
+        'Recurso'
+      ].map((option) => (
+        <button
+          key={option}
+          type="button"
+          onClick={() => {
+            setType(option);
+            setIsDirty(true);
+            setShowTypeOptions(false);
+          }}
+        >
+          {option}
+        </button>
+      ))}
+    </div>
+  )}
+
+</div>
               </div>
 
               <div className="meta-field">
