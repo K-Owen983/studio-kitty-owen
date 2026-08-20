@@ -202,11 +202,11 @@ TextAlign.configure({
     placeholder="Escribe una categoría..."
     value={category}
     onChange={(e) => {
-      setCategory(e.target.value);
-      setIsDirty(true);
-    }}
-    onFocus={() => setShowCategoryOptions(true)}
-  />
+  setCategory(e.target.value);
+  setIsDirty(true);
+  setShowCategoryOptions(false);
+}}
+      />
 
   <button
     type="button"
