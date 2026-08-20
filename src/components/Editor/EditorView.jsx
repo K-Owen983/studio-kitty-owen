@@ -34,6 +34,7 @@ export default function EditorView() {
   const [type, setType] = useState(currentPublication?.type || 'Nota Estratégica');
   const [category, setCategory] = useState(currentPublication?.category || 'Liderazgo');
   const [showCategoryOptions, setShowCategoryOptions] = useState(false);
+  const [showTypeOptions, setShowTypeOptions] = useState(false);
   const [coverImage, setCoverImage] = useState(currentPublication?.coverImage || null);
   const [featured, setFeatured] = useState(currentPublication?.featured || false);
   const [visibility, setVisibility] = useState(currentPublication?.visibility || 'public');
