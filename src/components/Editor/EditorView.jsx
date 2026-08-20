@@ -194,13 +194,24 @@ TextAlign.configure({
 
               <div className="meta-field">
                 <label>Categoría Editorial</label>
-                <select value={category} onChange={(e) => { setCategory(e.target.value); setIsDirty(true); }}>
-                  <option value="Comunicación">Comunicación</option>
-                  <option value="Liderazgo">Liderazgo</option>
-                  <option value="Tecnología">Tecnología</option>
-                  <option value="Ciencia de Datos">Ciencia de Datos</option>
-                  <option value="Estrategia">Estrategia</option>
-                </select>
+                <input
+  type="text"
+  list="categorias-editoriales"
+  value={category}
+  onChange={(e) => {
+    setCategory(e.target.value);
+    setIsDirty(true);
+  }}
+  placeholder="Escribe una categoría..."
+/>
+
+<datalist id="categorias-editoriales">
+  <option value="Comunicación" />
+  <option value="Liderazgo" />
+  <option value="Tecnología" />
+  <option value="Ciencia de Datos" />
+  <option value="Estrategia" />
+</datalist>
               </div>
             </div>
 
