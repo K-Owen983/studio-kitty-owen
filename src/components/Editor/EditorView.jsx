@@ -33,6 +33,7 @@ export default function EditorView() {
   const [subtitle, setSubtitle] = useState(currentPublication?.subtitle || '');
   const [type, setType] = useState(currentPublication?.type || 'Nota Estratégica');
   const [category, setCategory] = useState(currentPublication?.category || 'Liderazgo');
+  const [showCategoryOptions, setShowCategoryOptions] = useState(false);
   const [coverImage, setCoverImage] = useState(currentPublication?.coverImage || null);
   const [featured, setFeatured] = useState(currentPublication?.featured || false);
   const [visibility, setVisibility] = useState(currentPublication?.visibility || 'public');
@@ -194,24 +195,52 @@ TextAlign.configure({
 
               <div className="meta-field">
                 <label>Categoría Editorial</label>
-                <input
-  type="text"
-  list="categorias-editoriales"
-  value={category}
-  onChange={(e) => {
-    setCategory(e.target.value);
-    setIsDirty(true);
-  }}
-  placeholder="Escribe una categoría..."
-/>
+                <div className="category-combobox">
+  <input
+    type="text"
+    className="category-input"
+    placeholder="Escribe una categoría..."
+    value={category}
+    onChange={(e) => {
+      setCategory(e.target.value);
+      setIsDirty(true);
+    }}
+    onFocus={() => setShowCategoryOptions(true)}
+  />
 
-<datalist id="categorias-editoriales">
-  <option value="Comunicación" />
-  <option value="Liderazgo" />
-  <option value="Tecnología" />
-  <option value="Ciencia de Datos" />
-  <option value="Estrategia" />
-</datalist>
+  <button
+    type="button"
+    className="category-dropdown-button"
+    onClick={() => setShowCategoryOptions((prev) => !prev)}
+    aria-label="Mostrar categorías"
+  >
+    ▼
+  </button>
+
+  {showCategoryOptions && (
+    <div className="category-options">
+      {[
+        'Comunicación',
+        'Liderazgo',
+        'Tecnología',
+        'Ciencia de Datos',
+        'Estrategia'
+      ].map((option) => (
+        <button
+          key={option}
+          type="button"
+          onClick={() => {
+            setCategory(option);
+            setIsDirty(true);
+            setShowCategoryOptions(false);
+          }}
+        >
+          {option}
+        </button>
+      ))}
+    </div>
+  )}
+</div>
               </div>
             </div>
 
