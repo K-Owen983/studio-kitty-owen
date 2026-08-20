@@ -338,6 +338,11 @@ TextAlign.configure({
               lastSavedAt={lastSavedAt}
             />
           </div>
+                <div className="studio-powered-by">
+          <span>Powered by TRUPPIA</span>
+          <span>Decisions that transform.</span>
+          <span>© 2026</span>
+        </div>
         </main>
       </div>
 
