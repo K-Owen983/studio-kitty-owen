@@ -555,6 +555,38 @@ body {
   color: var(--text);
 }
 
+/* LISTA DE SUGERENCIAS DE CATEGORÍA */
+.category-options {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 0.35rem 0;
+  z-index: 20;
+  overflow: hidden;
+}
+
+.category-options button {
+  display: block;
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.875rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.category-options button:hover {
+  background: #f7f3fa;
+}
+
 /* INPUTS TITULO Y SUBTITULO SIN BORDES */
 .title-input {
   width: 100%;
