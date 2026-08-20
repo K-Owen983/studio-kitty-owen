@@ -522,6 +522,39 @@ body {
   background: #FFF;
 }
 
+/* SELECTOR HÍBRIDO DE CATEGORÍA */
+.category-combobox {
+  position: relative;
+  width: 100%;
+}
+
+.category-combobox .category-input {
+  width: 100%;
+  padding-right: 2.5rem;
+}
+
+.category-combobox .category-dropdown-button {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-combobox .category-dropdown-button:hover {
+  color: var(--text);
+}
+
 /* INPUTS TITULO Y SUBTITULO SIN BORDES */
 .title-input {
   width: 100%;
