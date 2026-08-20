@@ -76,17 +76,8 @@ export default function LivePreviewModal({ publication, onClose }) {
             dangerouslySetInnerHTML={{ __html: publication.contentHtml || '<p><em>Sin contenido</em></p>' }}
           />
 
-          {/* FIRMA DE KITTY OWEN */}
-          <div style={{ marginTop: '3.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border-light)', textAlign: 'right' }}>
-            <div style={{ fontFamily: 'var(--font-signature)', fontSize: '2.2rem', color: 'var(--text-primary)' }}>
-              Kitty Owen
-            </div>
-            <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>
-              Knowledge Hub • www.kittyowen.com
-            </div>
-          </div>
+                    </div>
         </div>
       </div>
-    </div>
-  );
+      );
 }
