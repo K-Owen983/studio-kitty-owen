@@ -202,6 +202,29 @@ body {
   width: 100%;
 }
 
+/* FIRMA DE STUDIO */
+.dashboard-powered-by {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.dashboard-powered-by span:first-child {
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.dashboard-powered-by span:last-child {
+  font-size: 0.65rem;
+}
+
 .dashboard-header {
   display: flex;
   justify-content: space-between;
