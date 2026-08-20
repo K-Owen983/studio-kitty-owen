@@ -157,6 +157,11 @@ export default function DashboardView() {
             ))}
           </div>
         )}
+            {/* FIRMA DE STUDIO */}
+      <div className="dashboard-powered-by">
+        <span>Developed by TRUPPIA</span>
+        <span>© 2026</span>
+      </div>
       </main>
 
       {/* MODAL VISTA PREVIA */}
