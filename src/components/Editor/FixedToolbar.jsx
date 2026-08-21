@@ -91,67 +91,71 @@ const onDownloadWord = async () => {
   const paragraphs = [];
 
   doc.body.childNodes.forEach((node) => {
-    if (node.nodeType === Node.TEXT_NODE) {
-if (
-  node.tagName.toLowerCase() === 'img' ||
-  node.querySelector('img')
-) {
-  return;
-}
-      const text = node.textContent.trim();
-
-      if (text) {
-        paragraphs.push(
-          new Paragraph({
-            children: [
-              new TextRun({
-                text,
-              }),
-            ],
-          })
-        );
-      }
-
-      return;
-    }
-
-    if (node.nodeType !== Node.ELEMENT_NODE) return;
-
+  if (node.nodeType === Node.TEXT_NODE) {
     const text = node.textContent.trim();
 
-    if (!text) return;
-
-    const tag = node.tagName.toLowerCase();
-
-    if (tag === 'h1') {
+    if (text) {
       paragraphs.push(
         new Paragraph({
-          heading: 'Heading1',
-          children: [new TextRun(text)],
-        })
-      );
-    } else if (tag === 'h2') {
-      paragraphs.push(
-        new Paragraph({
-          heading: 'Heading2',
-          children: [new TextRun(text)],
-        })
-      );
-    } else if (tag === 'h3') {
-      paragraphs.push(
-        new Paragraph({
-          heading: 'Heading3',
-          children: [new TextRun(text)],
-        })
-      );
-    } else {
-      paragraphs.push(
-        new Paragraph({
-          children: [new TextRun(text)],
+          children: [
+            new TextRun({
+              text,
+            }),
+          ],
         })
       );
     }
-  });
+
+    return;
+  }
+
+  if (node.nodeType !== Node.ELEMENT_NODE) return;
+
+  const tag = node.tagName.toLowerCase();
+
+  // Ignorar completamente las figuras de imágenes.
+  // Así no se exportan el título ni el caption de la imagen.
+  if (
+    tag === 'img' ||
+    tag === 'figure' ||
+    node.querySelector('img')
+  ) {
+    return;
+  }
+
+  const text = node.textContent.trim();
+
+  if (!text) return;
+
+  if (tag === 'h1') {
+    paragraphs.push(
+      new Paragraph({
+        heading: 'Heading1',
+        children: [new TextRun(text)],
+      })
+    );
+  } else if (tag === 'h2') {
+    paragraphs.push(
+      new Paragraph({
+        heading: 'Heading2',
+        children: [new TextRun(text)],
+      })
+    );
+  } else if (tag === 'h3') {
+    paragraphs.push(
+      new Paragraph({
+        heading: 'Heading3',
+        children: [new TextRun(text)],
+      })
+    );
+  } else {
+    paragraphs.push(
+      new Paragraph({
+        children: [new TextRun(text)],
+      })
+    );
+  }
+});
 
   const wordDocument = new Document({
     sections: [
