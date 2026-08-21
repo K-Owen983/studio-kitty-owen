@@ -76,16 +76,16 @@ const KittyImage = Image.extend({
       ],
     ];
 
-    if (title) {
-      children.push([
-        'div',
-        {
-  class: 'kitty-image-title',
-  'data-alignment': titleAlignment,
-},
-        title,
-      ]);
-    }
+   if (title) {
+  children.unshift([
+    'div',
+    {
+      class: 'kitty-image-title',
+      'data-alignment': titleAlignment,
+    },
+    title,
+  ]);
+}
 
     if (caption) {
       children.push([
