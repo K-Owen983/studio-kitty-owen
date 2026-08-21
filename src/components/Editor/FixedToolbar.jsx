@@ -184,79 +184,168 @@ const onDownloadPdf = async () => {
 
   pdfContainer.innerHTML = editorElement.innerHTML;
 
-  const images = pdfContainer.querySelectorAll('img');
-
-images.forEach((img) => {
-  img.style.maxWidth = '100%';
-  img.style.height = 'auto';
-  img.style.display = 'block';
-});
-
-const elements = pdfContainer.querySelectorAll('*');
-
-elements.forEach((element) => {
-  element.style.maxWidth = '100%';
-  element.style.boxSizing = 'border-box';
-  element.style.whiteSpace = 'normal';
-  element.style.overflowWrap = 'break-word';
-});
-
-const paragraphs = pdfContainer.querySelectorAll('p');
-
-paragraphs.forEach((p) => {
-  p.style.fontSize = '16px';
-  p.style.lineHeight = '1.6';
-});
-
-const h1 = pdfContainer.querySelectorAll('h1');
-
-h1.forEach((h) => {
-  h.style.fontSize = '32px';
-  h.style.lineHeight = '1.2';
-});
-
-const h2 = pdfContainer.querySelectorAll('h2');
-
-h2.forEach((h) => {
-  h.style.fontSize = '26px';
-  h.style.lineHeight = '1.3';
-});
-
-const h3 = pdfContainer.querySelectorAll('h3');
-
-h3.forEach((h) => {
-  h.style.fontSize = '22px';
-  h.style.lineHeight = '1.3';
-});
-
+  // Contenedor equivalente al área útil de una página A4
   pdfContainer.style.width = '794px';
-  pdfContainer.style.padding = '40px';
+  pdfContainer.style.padding = '45px 55px';
   pdfContainer.style.background = '#ffffff';
   pdfContainer.style.boxSizing = 'border-box';
   pdfContainer.style.color = '#111111';
   pdfContainer.style.fontFamily = 'Arial, sans-serif';
+  pdfContainer.style.fontSize = '16px';
+  pdfContainer.style.lineHeight = '1.5';
 
+  // Evitar que cualquier elemento se salga del ancho de la página
+  const elements = pdfContainer.querySelectorAll('*');
+
+  elements.forEach((element) => {
+    element.style.boxSizing = 'border-box';
+    element.style.maxWidth = '100%';
+    element.style.overflowWrap = 'break-word';
+    element.style.wordBreak = 'normal';
+  });
+
+  // =========================
+  // IMÁGENES
+  // =========================
+
+  const images = pdfContainer.querySelectorAll('img');
+
+  images.forEach((img) => {
+    const size = img.getAttribute('data-size') || 'medium';
+    const alignment = img.getAttribute('data-alignment') || 'center';
+
+    // Tamaño controlado según la configuración de la imagen
+    if (size === 'small') {
+      img.style.width = '35%';
+    } else if (size === 'medium') {
+      img.style.width = '60%';
+    } else if (size === 'large') {
+      img.style.width = '80%';
+    } else {
+      img.style.width = '100%';
+    }
+
+    img.style.maxWidth = '100%';
+    img.style.height = 'auto';
+    img.style.display = 'block';
+
+    // Alineación
+    if (alignment === 'left') {
+      img.style.marginLeft = '0';
+      img.style.marginRight = 'auto';
+    } else if (alignment === 'right') {
+      img.style.marginLeft = 'auto';
+      img.style.marginRight = '0';
+    } else {
+      img.style.marginLeft = 'auto';
+      img.style.marginRight = 'auto';
+    }
+
+    // Evitar que una imagen se parta entre dos páginas
+    img.style.pageBreakInside = 'avoid';
+    img.style.breakInside = 'avoid';
+  });
+
+  // =========================
+  // TÍTULOS
+  // =========================
+
+  pdfContainer.querySelectorAll('h1').forEach((h) => {
+    h.style.fontSize = '30px';
+    h.style.lineHeight = '1.2';
+    h.style.marginTop = '0';
+    h.style.marginBottom = '18px';
+  });
+
+  pdfContainer.querySelectorAll('h2').forEach((h) => {
+    h.style.fontSize = '24px';
+    h.style.lineHeight = '1.25';
+    h.style.marginTop = '20px';
+    h.style.marginBottom = '14px';
+  });
+
+  pdfContainer.querySelectorAll('h3').forEach((h) => {
+    h.style.fontSize = '20px';
+    h.style.lineHeight = '1.3';
+    h.style.marginTop = '18px';
+    h.style.marginBottom = '10px';
+  });
+
+  // =========================
+  // TEXTO
+  // =========================
+
+  pdfContainer.querySelectorAll('p').forEach((p) => {
+    p.style.fontSize = '16px';
+    p.style.lineHeight = '1.5';
+    p.style.marginTop = '0';
+    p.style.marginBottom = '12px';
+  });
+
+  // =========================
+  // TABLAS
+  // =========================
+
+  pdfContainer.querySelectorAll('table').forEach((table) => {
+    table.style.width = '100%';
+    table.style.maxWidth = '100%';
+    table.style.borderCollapse = 'collapse';
+    table.style.pageBreakInside = 'avoid';
+    table.style.breakInside = 'avoid';
+  });
+
+  // =========================
+  // BLOQUES DE IMAGEN
+  // =========================
+
+  pdfContainer.querySelectorAll('figure').forEach((figure) => {
+    figure.style.maxWidth = '100%';
+    figure.style.pageBreakInside = 'avoid';
+    figure.style.breakInside = 'avoid';
+    figure.style.marginLeft = '0';
+    figure.style.marginRight = '0';
+  });
+
+  // Agregamos el documento temporalmente
   document.body.appendChild(pdfContainer);
+
+  // Esperamos a que las imágenes terminen de cargar
+  const imagePromises = Array.from(images).map((img) => {
+    if (img.complete) return Promise.resolve();
+
+    return new Promise((resolve) => {
+      img.onload = resolve;
+      img.onerror = resolve;
+    });
+  });
+
+  await Promise.all(imagePromises);
 
   const options = {
     margin: 0,
     filename: 'publicacion.pdf',
+
     image: {
       type: 'jpeg',
-      quality: 0.98,
+      quality: 0.95,
     },
+
     html2canvas: {
-      scale: 2,
+      scale: 1.5,
       useCORS: true,
       backgroundColor: '#ffffff',
+      logging: false,
     },
+
     jsPDF: {
-      unit: 'px',
+      unit: 'mm',
       format: 'a4',
       orientation: 'portrait',
     },
+
     pagebreak: {
       mode: ['css', 'legacy'],
+      avoid: ['img', 'figure', 'table'],
     },
   };
 
