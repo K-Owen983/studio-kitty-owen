@@ -192,6 +192,15 @@ images.forEach((img) => {
   img.style.display = 'block';
 });
 
+const elements = pdfContainer.querySelectorAll('*');
+
+elements.forEach((element) => {
+  element.style.maxWidth = '100%';
+  element.style.boxSizing = 'border-box';
+  element.style.whiteSpace = 'normal';
+  element.style.overflowWrap = 'break-word';
+});
+
   pdfContainer.style.width = '794px';
   pdfContainer.style.padding = '40px';
   pdfContainer.style.background = '#ffffff';
