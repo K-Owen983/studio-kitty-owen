@@ -123,6 +123,43 @@ const editImage = () => {
 };
  return (
   <>
+    <div className="document-actions-toolbar">
+  <div className="toolbar-group">
+    <button
+      onClick={onPreview}
+      className="btn btn-secondary"
+      style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}
+    >
+      <Eye size={15} /> Vista Previa
+    </button>
+
+    <button
+      onClick={onSaveDraft}
+      disabled={isSaving}
+      className="btn btn-secondary"
+      style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}
+    >
+      <Save size={15} /> Guardar Borrador
+    </button>
+
+    <button
+      onClick={onDownload}
+      className="btn btn-secondary"
+      style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}
+    >
+      <Download size={15} /> Descargar
+    </button>
+
+    <button
+      onClick={onPublish}
+      disabled={isSaving}
+      className="btn btn-primary"
+      style={{ padding: '0.4rem 0.9rem', fontSize: '0.85rem' }}
+    >
+      <Send size={15} /> Publicar
+    </button>
+  </div>
+</div>
     <div className="fixed-editor-toolbar">
       {/* SECCIÓN IZQUIERDA: BOTÓN VOLVER Y EDICIÓN DE FORMATO */}
       <div className="toolbar-group">
