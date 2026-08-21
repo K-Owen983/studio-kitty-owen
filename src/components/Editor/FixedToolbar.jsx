@@ -201,6 +201,34 @@ elements.forEach((element) => {
   element.style.overflowWrap = 'break-word';
 });
 
+const paragraphs = pdfContainer.querySelectorAll('p');
+
+paragraphs.forEach((p) => {
+  p.style.fontSize = '16px';
+  p.style.lineHeight = '1.6';
+});
+
+const h1 = pdfContainer.querySelectorAll('h1');
+
+h1.forEach((h) => {
+  h.style.fontSize = '32px';
+  h.style.lineHeight = '1.2';
+});
+
+const h2 = pdfContainer.querySelectorAll('h2');
+
+h2.forEach((h) => {
+  h.style.fontSize = '26px';
+  h.style.lineHeight = '1.3';
+});
+
+const h3 = pdfContainer.querySelectorAll('h3');
+
+h3.forEach((h) => {
+  h.style.fontSize = '22px';
+  h.style.lineHeight = '1.3';
+});
+
   pdfContainer.style.width = '794px';
   pdfContainer.style.padding = '40px';
   pdfContainer.style.background = '#ffffff';
