@@ -6,6 +6,7 @@ import {
   AlignLeft, AlignCenter, AlignRight, AlignJustify
 } from 'lucide-react';
 import ImageConfigModal from './ImageConfigModal';
+import { Document, Packer, Paragraph, TextRun } from 'docx';
 
 export default function FixedToolbar({
   editor,
