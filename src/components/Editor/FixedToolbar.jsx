@@ -260,7 +260,7 @@ const editImage = () => {
     </button>
 
     <button
-      onClick={onDownload}
+      onClick={onDownloadPdf}
       className="btn btn-secondary"
       style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}
     >
