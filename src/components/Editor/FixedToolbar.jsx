@@ -184,7 +184,7 @@ const onDownloadPdf = async () => {
 
   pdfContainer.innerHTML = editorElement.innerHTML;
 
-  pdfContainer.querySelectorAll('figcaption').forEach((caption) => {
+  pdfContainer.querySelectorAll('figcaption, .kitty-image-caption').forEach((caption) => {
   caption.remove();
 });
 
