@@ -170,6 +170,52 @@ const onDownload = async () => {
   URL.revokeObjectURL(url);
 };
 
+const onDownloadPdf = async () => {
+  const editorElement = editor.view.dom;
+
+  const pdfContainer = document.createElement('div');
+
+  pdfContainer.innerHTML = editorElement.innerHTML;
+
+  pdfContainer.style.width = '794px';
+  pdfContainer.style.padding = '40px';
+  pdfContainer.style.background = '#ffffff';
+  pdfContainer.style.boxSizing = 'border-box';
+  pdfContainer.style.color = '#111111';
+  pdfContainer.style.fontFamily = 'Arial, sans-serif';
+
+  document.body.appendChild(pdfContainer);
+
+  const options = {
+    margin: 0,
+    filename: 'publicacion.pdf',
+    image: {
+      type: 'jpeg',
+      quality: 0.98,
+    },
+    html2canvas: {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: '#ffffff',
+    },
+    jsPDF: {
+      unit: 'px',
+      format: 'a4',
+      orientation: 'portrait',
+    },
+    pagebreak: {
+      mode: ['css', 'legacy'],
+    },
+  };
+
+  await html2pdf()
+    .set(options)
+    .from(pdfContainer)
+    .save();
+
+  pdfContainer.remove();
+};
+
 const editImage = () => {
   const { selection } = editor.state;
   const node = selection.node;
