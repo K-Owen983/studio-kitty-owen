@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Bold, Italic, Underline as UnderlineIcon, Heading1, Heading2, Heading3,Pencil,
   List, ListOrdered, Quote, Link as LinkIcon, Image as ImageIcon,
-  Table as TableIcon, Code, Undo, Redo, Eye, Save, Send, ArrowLeft,
+  Table as TableIcon, Code, Undo, Redo, Eye, Save, Send, Download, ArrowLeft,
   AlignLeft, AlignCenter, AlignRight, AlignJustify
 } from 'lucide-react';
 import ImageConfigModal from './ImageConfigModal';
@@ -77,6 +77,26 @@ const insertTable = () => {
       withHeaderRow: true
     })
     .run();
+};
+
+const onDownload = () => {
+  const html = editor.getHTML();
+
+  const blob = new Blob([html], {
+    type: 'text/html;charset=utf-8'
+  });
+
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+
+  link.href = url;
+  link.download = 'publicacion.html';
+
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+
+  URL.revokeObjectURL(url);
 };
 
 const editImage = () => {
@@ -268,21 +288,7 @@ const editImage = () => {
         </button>
       </div>
 
-      {/* SECCIÓN DERECHA: ACCIONES DEL DOCUMENTO */}
-      <div className="toolbar-group">
-        <button onClick={onPreview} className="btn btn-secondary" style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}>
-          <Eye size={15} /> Vista Previa
-        </button>
-
-        <button onClick={onSaveDraft} disabled={isSaving} className="btn btn-secondary" style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}>
-          <Save size={15} /> Guardar Borrador
-        </button>
-
-        <button onClick={onPublish} disabled={isSaving} className="btn btn-primary" style={{ padding: '0.4rem 0.9rem', fontSize: '0.85rem' }}>
-          <Send size={15} /> Publicar
-        </button>
-      </div>
-             </div>
+                   </div>
               {imageConfig && (
         <ImageConfigModal
           imageSrc={imageConfig.src}
