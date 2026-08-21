@@ -92,6 +92,12 @@ const onDownloadWord = async () => {
 
   doc.body.childNodes.forEach((node) => {
     if (node.nodeType === Node.TEXT_NODE) {
+if (
+  node.tagName.toLowerCase() === 'img' ||
+  node.querySelector('img')
+) {
+  return;
+}
       const text = node.textContent.trim();
 
       if (text) {
