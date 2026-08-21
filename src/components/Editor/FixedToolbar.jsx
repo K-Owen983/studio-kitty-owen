@@ -82,7 +82,7 @@ const insertTable = () => {
     .run();
 };
 
-const onDownload = async () => {
+const onDownloadWord = async () => {
   const html = editor.getHTML();
 
   const parser = new DOMParser();
