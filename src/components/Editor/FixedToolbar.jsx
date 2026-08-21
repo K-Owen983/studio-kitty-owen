@@ -184,6 +184,14 @@ const onDownloadPdf = async () => {
 
   pdfContainer.innerHTML = editorElement.innerHTML;
 
+  const images = pdfContainer.querySelectorAll('img');
+
+images.forEach((img) => {
+  img.style.maxWidth = '100%';
+  img.style.height = 'auto';
+  img.style.display = 'block';
+});
+
   pdfContainer.style.width = '794px';
   pdfContainer.style.padding = '40px';
   pdfContainer.style.background = '#ffffff';
