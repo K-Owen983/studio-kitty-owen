@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import ImageConfigModal from './ImageConfigModal';
 import { Document, Packer, Paragraph, TextRun } from 'docx';
+import html2pdf from 'html2pdf.js';
 
 export default function FixedToolbar({
   editor,
@@ -80,18 +81,87 @@ const insertTable = () => {
     .run();
 };
 
-const onDownload = () => {
+const onDownload = async () => {
   const html = editor.getHTML();
 
-  const blob = new Blob([html], {
-    type: 'text/html;charset=utf-8'
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, 'text/html');
+
+  const paragraphs = [];
+
+  doc.body.childNodes.forEach((node) => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      const text = node.textContent.trim();
+
+      if (text) {
+        paragraphs.push(
+          new Paragraph({
+            children: [
+              new TextRun({
+                text,
+              }),
+            ],
+          })
+        );
+      }
+
+      return;
+    }
+
+    if (node.nodeType !== Node.ELEMENT_NODE) return;
+
+    const text = node.textContent.trim();
+
+    if (!text) return;
+
+    const tag = node.tagName.toLowerCase();
+
+    if (tag === 'h1') {
+      paragraphs.push(
+        new Paragraph({
+          heading: 'Heading1',
+          children: [new TextRun(text)],
+        })
+      );
+    } else if (tag === 'h2') {
+      paragraphs.push(
+        new Paragraph({
+          heading: 'Heading2',
+          children: [new TextRun(text)],
+        })
+      );
+    } else if (tag === 'h3') {
+      paragraphs.push(
+        new Paragraph({
+          heading: 'Heading3',
+          children: [new TextRun(text)],
+        })
+      );
+    } else {
+      paragraphs.push(
+        new Paragraph({
+          children: [new TextRun(text)],
+        })
+      );
+    }
   });
+
+  const wordDocument = new Document({
+    sections: [
+      {
+        properties: {},
+        children: paragraphs,
+      },
+    ],
+  });
+
+  const blob = await Packer.toBlob(wordDocument);
 
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
 
   link.href = url;
-  link.download = 'publicacion.html';
+  link.download = 'publicacion.docx';
 
   document.body.appendChild(link);
   link.click();
