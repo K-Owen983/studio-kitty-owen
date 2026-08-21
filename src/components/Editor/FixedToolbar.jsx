@@ -184,6 +184,10 @@ const onDownloadPdf = async () => {
 
   pdfContainer.innerHTML = editorElement.innerHTML;
 
+  pdfContainer.querySelectorAll('figcaption').forEach((caption) => {
+  caption.remove();
+});
+
   // Contenedor equivalente al área útil de una página A4
   pdfContainer.style.width = '794px';
   pdfContainer.style.padding = '45px 55px';
