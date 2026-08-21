@@ -260,13 +260,70 @@ const editImage = () => {
       <Save size={15} /> Guardar Borrador
     </button>
 
-    <button
-      onClick={onDownloadPdf}
-      className="btn btn-secondary"
-      style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}
+    <div style={{ position: 'relative' }}>
+  <button
+    onClick={() => setShowDownloadMenu(!showDownloadMenu)}
+    className="btn btn-secondary"
+    style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}
+  >
+    <Download size={15} /> Descargar
+  </button>
+
+  {showDownloadMenu && (
+    <div
+      style={{
+        position: 'absolute',
+        top: 'calc(100% + 0.4rem)',
+        left: 0,
+        background: '#ffffff',
+        border: '1px solid #e5e5e5',
+        borderRadius: '8px',
+        boxShadow: '0 4px 12px rgba(0,0,0,0.12)',
+        padding: '0.35rem',
+        zIndex: 200,
+        minWidth: '130px'
+      }}
     >
-      <Download size={15} /> Descargar
-    </button>
+      <button
+        onClick={() => {
+          setShowDownloadMenu(false);
+          onDownloadWord();
+        }}
+        style={{
+          display: 'block',
+          width: '100%',
+          padding: '0.5rem 0.7rem',
+          border: 'none',
+          background: 'transparent',
+          textAlign: 'left',
+          cursor: 'pointer',
+          borderRadius: '5px'
+        }}
+      >
+        📝 Word
+      </button>
+
+      <button
+        onClick={() => {
+          setShowDownloadMenu(false);
+          onDownloadPdf();
+        }}
+        style={{
+          display: 'block',
+          width: '100%',
+          padding: '0.5rem 0.7rem',
+          border: 'none',
+          background: 'transparent',
+          textAlign: 'left',
+          cursor: 'pointer',
+          borderRadius: '5px'
+        }}
+      >
+        📄 PDF
+      </button>
+    </div>
+  )}
+</div>
 
     <button
       onClick={onPublish}
