@@ -188,6 +188,12 @@ const onDownloadPdf = async () => {
   caption.remove();
 });
 
+pdfContainer.querySelectorAll('img').forEach((img) => {
+  img.removeAttribute('data-caption');
+  img.removeAttribute('data-caption-alignment');
+  img.removeAttribute('title');
+});
+
   // Contenedor equivalente al área útil de una página A4
   pdfContainer.style.width = '794px';
   pdfContainer.style.padding = '45px 55px';
