@@ -567,6 +567,7 @@ const editImage = () => {
           <option value="">Fuente</option>
           <option value="Inter">Inter</option>
           <option value="Arial">Arial</option>
+          <option value="Calibri">Calibri</option>
           <option value="Georgia">Georgia</option>
           <option value="Times New Roman">Times New Roman</option>
           <option value="Verdana">Verdana</option>
