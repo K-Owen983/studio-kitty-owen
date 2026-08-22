@@ -636,7 +636,7 @@ const editImage = () => {
 
 </div>
 
-<{showSecondaryToolbar && (
+{showSecondaryToolbar && (
   <div className="toolbar-secondary">
     {/* LISTAS Y BLOQUES */}
         <button
@@ -704,9 +704,10 @@ const editImage = () => {
         <button onClick={() => editor.chain().focus().redo().run()} className="tb-btn" title="Rehacer (Ctrl+Y)">
           <Redo size={16} />
         </button>
-            </div>
-    </div>
-  </div>
+</div>
+)}
+</div>
+</div>
               {imageConfig && (
         <ImageConfigModal
           imageSrc={imageConfig.src}
