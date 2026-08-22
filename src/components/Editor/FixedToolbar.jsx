@@ -550,6 +550,28 @@ const editImage = () => {
           <Heading3 size={16} />
         </button>
 
+<select
+          className="tb-select"
+          value={editor.getAttributes('textStyle').fontFamily || ''}
+          onChange={(e) => {
+            const fontFamily = e.target.value;
+
+            if (fontFamily) {
+              editor.chain().focus().setFontFamily(fontFamily).run();
+            } else {
+              editor.chain().focus().unsetFontFamily().run();
+            }
+          }}
+          title="Fuente"
+        >
+          <option value="">Fuente</option>
+          <option value="Inter">Inter</option>
+          <option value="Arial">Arial</option>
+          <option value="Georgia">Georgia</option>
+          <option value="Times New Roman">Times New Roman</option>
+          <option value="Verdana">Verdana</option>
+        </select>
+
         <div className="toolbar-divider" />
 {/* ALINEACIÓN DE TEXTO */}
 <button
