@@ -1285,3 +1285,26 @@ body {
 .ProseMirror figure.kitty-image .kitty-image-caption:empty {
   display: none;
 }
+
+/* SELECTORES DE LA BARRA DE HERRAMIENTAS */
+.tb-select {
+  height: 32px;
+  padding: 0 0.55rem;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  background: var(--bg-app);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.tb-select:hover {
+  border-color: var(--accent-primary);
+}
+
+.tb-select:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px rgba(107, 45, 92, 0.1);
+}
