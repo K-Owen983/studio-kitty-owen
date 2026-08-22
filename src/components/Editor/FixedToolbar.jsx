@@ -578,6 +578,16 @@ const editImage = () => {
 <select
   className="tb-select tb-select-size"
   title="Tamaño"
+  value={editor.getAttributes('textStyle').fontSize || ''}
+  onChange={(e) => {
+    const fontSize = e.target.value;
+
+    if (fontSize) {
+      editor.chain().focus().setFontSize(fontSize).run();
+    } else {
+      editor.chain().focus().unsetFontSize().run();
+    }
+  }}
 >
   <option value="">Tamaño</option>
   <option value="12px">12</option>

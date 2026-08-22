@@ -109,6 +109,7 @@ export default function EditorView() {
     extensions: [
       StarterKit,
       TextStyle,
+      FontSize,
       FontFamily,
 TextAlign.configure({
   types: ['heading', 'paragraph'],
