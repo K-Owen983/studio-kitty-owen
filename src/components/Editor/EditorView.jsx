@@ -52,6 +52,7 @@ export default function EditorView() {
   const editor = useEditor({
     extensions: [
       StarterKit,
+      TextStyle,
       FontFamily,
 TextAlign.configure({
   types: ['heading', 'paragraph'],
