@@ -21,6 +21,7 @@ export default function FixedToolbar({
   if (!editor) return null;
   const [imageConfig, setImageConfig] = React.useState(null);
   const [showDownloadMenu, setShowDownloadMenu] = React.useState(false);
+  const [showSecondaryToolbar, setShowSecondaryToolbar] = React.useState(false);
   const addLink = () => {
   const previousUrl = editor.getAttributes('link').href || '';
   const inputUrl = window.prompt('Ingresa la URL del enlace:', previousUrl);
