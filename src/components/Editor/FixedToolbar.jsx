@@ -573,6 +573,21 @@ const editImage = () => {
           <option value="Verdana">Verdana</option>
         </select>
 
+<select
+  className="tb-select"
+  title="Tamaño"
+>
+  <option value="">Tamaño</option>
+  <option value="12px">12</option>
+  <option value="14px">14</option>
+  <option value="16px">16</option>
+  <option value="18px">18</option>
+  <option value="20px">20</option>
+  <option value="24px">24</option>
+  <option value="28px">28</option>
+  <option value="32px">32</option>
+</select>
+
         <div className="toolbar-divider" />
 {/* ALINEACIÓN DE TEXTO */}
 <button
