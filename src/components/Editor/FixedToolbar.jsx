@@ -498,6 +498,7 @@ const editImage = () => {
         
         <div className="toolbar-divider" />
 
+        <div className="toolbar-primary">
         {/* FORMATOS BÁSICOS */}
         <button
           onClick={() => editor.chain().focus().toggleBold().run()}
@@ -624,6 +625,9 @@ const editImage = () => {
 
 <div className="toolbar-divider" />
 
+</div>
+
+<div className="toolbar-secondary">
         {/* LISTAS Y BLOQUES */}
         <button
           onClick={() => editor.chain().focus().toggleBulletList().run()}
@@ -690,9 +694,9 @@ const editImage = () => {
         <button onClick={() => editor.chain().focus().redo().run()} className="tb-btn" title="Rehacer (Ctrl+Y)">
           <Redo size={16} />
         </button>
-      </div>
-
-                   </div>
+            </div>
+    </div>
+  </div>
               {imageConfig && (
         <ImageConfigModal
           imageSrc={imageConfig.src}
