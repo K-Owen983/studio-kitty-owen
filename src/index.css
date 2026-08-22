@@ -440,6 +440,22 @@ body {
   gap: 1rem;
 }
 
+.toolbar-primary {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.toolbar-secondary {
+  display: none;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
 .toolbar-group {
   display: flex;
   align-items: center;
