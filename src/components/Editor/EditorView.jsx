@@ -54,6 +54,7 @@ export default function EditorView() {
       StarterKit,
       TextStyle,
       FontFamily,
+      FontSize,
 TextAlign.configure({
   types: ['heading', 'paragraph'],
 }),
