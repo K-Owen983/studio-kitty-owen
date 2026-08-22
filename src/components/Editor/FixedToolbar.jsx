@@ -626,6 +626,14 @@ const editImage = () => {
 
 <div className="toolbar-divider" />
 
+<button
+  onClick={() => setShowSecondaryToolbar(!showSecondaryToolbar)}
+  className={`tb-btn ${showSecondaryToolbar ? 'is-active' : ''}`}
+  title={showSecondaryToolbar ? "Ocultar más herramientas" : "Mostrar más herramientas"}
+>
+  ▾
+</button>
+
 </div>
 
 <div className="toolbar-secondary">
