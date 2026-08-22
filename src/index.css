@@ -1287,26 +1287,24 @@ body {
 }
 
 /* SELECTORES DE LA BARRA DE HERRAMIENTAS */
-..tb-select {
-  height: 36px;
-  min-width: 245px;
-  padding: 0 0.75rem;
-  border: 1px solid #E1E1E1;
-  border-radius: 10px;
-  background: #FFFFFF;
+.tb-select {
+  height: 32px;
+  padding: 0 0.55rem;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  background: var(--bg-app);
   color: var(--text-primary);
   font-family: var(--font-sans);
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   cursor: pointer;
   outline: none;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 .tb-select:hover {
-  border-color: #D0D0D0;
+  border-color: var(--accent-primary);
 }
 
 .tb-select:focus {
-  border-color: #6B2D5C;
+  border-color: var(--accent-primary);
   box-shadow: 0 0 0 2px rgba(107, 45, 92, 0.1);
 }
