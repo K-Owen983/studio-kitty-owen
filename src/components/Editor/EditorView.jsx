@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
+import FontFamily from '@tiptap/extension-font-family';
 import Underline from '@tiptap/extension-underline';
 import Link from '@tiptap/extension-link';
 import KittyImage from './KittyImage';
@@ -50,6 +51,7 @@ export default function EditorView() {
   const editor = useEditor({
     extensions: [
       StarterKit,
+      FontFamily,
 TextAlign.configure({
   types: ['heading', 'paragraph'],
 }),
