@@ -636,8 +636,9 @@ const editImage = () => {
 
 </div>
 
-<div className="toolbar-secondary">
-        {/* LISTAS Y BLOQUES */}
+<{showSecondaryToolbar && (
+  <div className="toolbar-secondary">
+    {/* LISTAS Y BLOQUES */}
         <button
           onClick={() => editor.chain().focus().toggleBulletList().run()}
           className={`tb-btn ${editor.isActive('bulletList') ? 'is-active' : ''}`}
