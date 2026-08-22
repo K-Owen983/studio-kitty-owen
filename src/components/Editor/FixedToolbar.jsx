@@ -574,7 +574,7 @@ const editImage = () => {
         </select>
 
 <select
-  className="tb-select"
+  className="tb-select tb-select-size"
   title="Tamaño"
 >
   <option value="">Tamaño</option>
