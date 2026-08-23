@@ -375,7 +375,13 @@ pdfContainer.querySelectorAll('img').forEach((img) => {
 };
 
 const editImage = () => {
+  console.error('EDIT IMAGE: SE EJECUTÓ');
+
   const { selection } = editor.state;
+
+  console.log('SELECCIÓN ACTUAL:', selection);
+console.log('NODO SELECCIONADO:', selection.node);
+
   const node = selection.node;
 
   if (!node || node.type.name !== 'image') {
