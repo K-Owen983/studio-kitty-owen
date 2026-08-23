@@ -1343,8 +1343,8 @@ body {
 }
 
 .tb-font-trigger {
-  width: 90px;
-  min-width: 90px;
+  width: 200px;
+  min-width: 200px;
   display: flex;
   align-items: center;
   justify-content: space-between;

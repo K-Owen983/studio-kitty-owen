@@ -649,7 +649,7 @@ const editImage = () => {
 <div className="tb-font-dropdown">
   <button
     type="button"
-    className="tb-select tb-font-trigger"
+    className="tb-select tb-size-trigger"
     title="Tamaño"
     onClick={() => {
   setShowFontMenu(false);
