@@ -1343,8 +1343,8 @@ body {
 }
 
 .tb-font-trigger {
-  width: 150px;
-  min-width: 150px;
+  width: 170px;
+  min-width: 170px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1354,8 +1354,8 @@ body {
 }
 
 .tb-size-trigger {
-  width: 90px;
-  min-width: 90px;
+  width: 55px;
+  min-width: 55px;
   background-image: none;
 }
 
