@@ -570,17 +570,7 @@ const editImage = () => {
 
   {showFontMenu && (
     <div className="tb-font-menu">
-      <button
-        type="button"
-        className="tb-font-option"
-        onClick={() => {
-          editor.chain().focus().unsetFontFamily().run();
-          setShowFontMenu(false);
-        }}
-      >
-        Fuente
-      </button>
-
+      
       <button
         type="button"
         className="tb-font-option"
@@ -666,11 +656,7 @@ const editImage = () => {
   setShowSizeMenu((prev) => !prev);
 }}
   >
-    <span>
-      {editor.getAttributes('textStyle').fontSize
-        ? parseInt(editor.getAttributes('textStyle').fontSize)
-        : 'Tamaño'}
-    </span>
+    <span>Tamaño</span>
 
     <span className="tb-select-arrow">⌄</span>
   </button>
