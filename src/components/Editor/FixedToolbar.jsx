@@ -590,7 +590,7 @@ const editImage = () => {
   }}
 >
   <option value="">Tamaño</option>
-  <option value="12px">12</option>
+  <option value="12pt">12</option>
   <option value="14px">14</option>
   <option value="16px">16</option>
   <option value="18px">18</option>
