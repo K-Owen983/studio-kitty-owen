@@ -641,7 +641,7 @@ const editImage = () => {
           setShowFontMenu(false);
         }}
       >
-        Verdana
+        Arial Rounded MT Bold
       </button>
     </div>
   )}
