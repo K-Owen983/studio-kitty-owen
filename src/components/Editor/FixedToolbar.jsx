@@ -776,6 +776,7 @@ console.log('NODO SELECCIONADO:', selection.node);
           <ListOrdered size={16} />
         </button>
         <button
+        type="button"
   onMouseDown={(e) => e.preventDefault()}
   onClick={editImage}
   className="tb-btn"
