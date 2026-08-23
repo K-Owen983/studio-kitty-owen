@@ -1242,18 +1242,20 @@ body {
    2. ALINEACIÓN (Mueve el bloque completo: título + img + pie)
    --------------------------------------------------------- */
 .ProseMirror figure.kitty-image[data-alignment="left"] {
-  margin-left: 0;
-  margin-right: auto;
+  float: left;
+  margin: 0 1.5rem 1rem 0;
 }
 
 .ProseMirror figure.kitty-image[data-alignment="center"] {
+  float: none;
   margin-left: auto;
   margin-right: auto;
+  clear: both;
 }
 
 .ProseMirror figure.kitty-image[data-alignment="right"] {
-  margin-left: auto;
-  margin-right: 0;
+  float: right;
+  margin: 0 0 1rem 1.5rem;
 }
 
 /* ---------------------------------------------------------
