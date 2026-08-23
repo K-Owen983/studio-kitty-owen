@@ -680,7 +680,7 @@ const editImage = () => {
             editor
               .chain()
               .focus()
-              .setFontSize(`${size}px`)
+              .setFontSize(`${size}pt`)
               .run();
 
             setShowSizeMenu(false);
