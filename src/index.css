@@ -1371,6 +1371,7 @@ body {
   padding: 0.35rem 0;
   z-index: 20;
   overflow-y: auto;
+overflow-x: hidden;
 }
 
 .tb-font-option {
