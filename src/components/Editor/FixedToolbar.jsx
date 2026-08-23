@@ -565,7 +565,7 @@ const editImage = () => {
 }}
   >
     <span className="tb-font-label">
-  {editor.getAttributes('textStyle').fontFamily || 'Fuente'}
+  {editor.getAttributes('textStyle').fontFamily || 'Arial'}
 </span>
       </button>
 
@@ -595,6 +595,18 @@ const editImage = () => {
       >
         Arial
       </button>
+
+      <button
+  type="button"
+  className="tb-font-option"
+  style={{ fontFamily: 'Arial Rounded MT Bold' }}
+  onClick={() => {
+    editor.chain().focus().setFontFamily('Arial Rounded MT Bold').run();
+    setShowFontMenu(false);
+  }}
+>
+  Arial Rounded MT Bold
+</button>
 
       <button
         type="button"
@@ -660,7 +672,7 @@ const editImage = () => {
     <span>
   {editor.getAttributes('textStyle').fontSize
     ? parseInt(editor.getAttributes('textStyle').fontSize)
-    : 'Tamaño'}
+    : '12'}
 </span>
 
       </button>
