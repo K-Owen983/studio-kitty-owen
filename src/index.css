@@ -1354,6 +1354,13 @@ body {
   background-image: none;
 }
 
+.tb-font-label {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .tb-size-trigger {
   width: 55px;
   min-width: 55px;

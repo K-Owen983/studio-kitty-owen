@@ -564,7 +564,9 @@ const editImage = () => {
   setShowFontMenu((prev) => !prev);
 }}
   >
-    {editor.getAttributes('textStyle').fontFamily || 'Fuente'}
+    <span className="tb-font-label">
+  {editor.getAttributes('textStyle').fontFamily || 'Fuente'}
+</span>
       </button>
 
   {showFontMenu && (
