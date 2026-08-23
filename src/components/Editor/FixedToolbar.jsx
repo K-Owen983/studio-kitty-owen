@@ -732,7 +732,7 @@ const editImage = () => {
   className={`tb-btn ${showSecondaryToolbar ? 'is-active' : ''}`}
   title={showSecondaryToolbar ? "Ocultar más herramientas" : "Mostrar más herramientas"}
 >
-  ▾
+  ...
 </button>
 
 </div>
