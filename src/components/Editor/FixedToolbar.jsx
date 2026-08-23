@@ -553,28 +553,104 @@ const editImage = () => {
           <Heading3 size={16} />
         </button>
 
-<select
-          className="tb-select"
-          value={editor.getAttributes('textStyle').fontFamily || ''}
-          onChange={(e) => {
-            const fontFamily = e.target.value;
+<div className="tb-font-dropdown">
+  <button
+    type="button"
+    className="tb-select tb-font-trigger"
+    title="Fuente"
+    onClick={() => setShowFontMenu(!showFontMenu)}
+  >
+    {editor.getAttributes('textStyle').fontFamily || 'Fuente'}
+    <span className="tb-select-arrow">⌄</span>
+  </button>
 
-            if (fontFamily) {
-              editor.chain().focus().setFontFamily(fontFamily).run();
-            } else {
-              editor.chain().focus().unsetFontFamily().run();
-            }
-          }}
-          title="Fuente"
-        >
-          <option value="">Fuente</option>
-          <option value="Inter">Inter</option>
-          <option value="Arial">Arial</option>
-          <option value="Calibri">Calibri</option>
-          <option value="Georgia">Georgia</option>
-          <option value="Times New Roman">Times New Roman</option>
-          <option value="Verdana">Verdana</option>
-        </select>
+  {showFontMenu && (
+    <div className="tb-font-menu">
+      <button
+        type="button"
+        className="tb-font-option"
+        onClick={() => {
+          editor.chain().focus().unsetFontFamily().run();
+          setShowFontMenu(false);
+        }}
+      >
+        Fuente
+      </button>
+
+      <button
+        type="button"
+        className="tb-font-option"
+        style={{ fontFamily: 'Inter' }}
+        onClick={() => {
+          editor.chain().focus().setFontFamily('Inter').run();
+          setShowFontMenu(false);
+        }}
+      >
+        Inter
+      </button>
+
+      <button
+        type="button"
+        className="tb-font-option"
+        style={{ fontFamily: 'Arial' }}
+        onClick={() => {
+          editor.chain().focus().setFontFamily('Arial').run();
+          setShowFontMenu(false);
+        }}
+      >
+        Arial
+      </button>
+
+      <button
+        type="button"
+        className="tb-font-option"
+        style={{ fontFamily: 'Calibri' }}
+        onClick={() => {
+          editor.chain().focus().setFontFamily('Calibri').run();
+          setShowFontMenu(false);
+        }}
+      >
+        Calibri
+      </button>
+
+      <button
+        type="button"
+        className="tb-font-option"
+        style={{ fontFamily: 'Georgia' }}
+        onClick={() => {
+          editor.chain().focus().setFontFamily('Georgia').run();
+          setShowFontMenu(false);
+        }}
+      >
+        Georgia
+      </button>
+
+      <button
+        type="button"
+        className="tb-font-option"
+        style={{ fontFamily: 'Times New Roman' }}
+        onClick={() => {
+          editor.chain().focus().setFontFamily('Times New Roman').run();
+          setShowFontMenu(false);
+        }}
+      >
+        Times New Roman
+      </button>
+
+      <button
+        type="button"
+        className="tb-font-option"
+        style={{ fontFamily: 'Verdana' }}
+        onClick={() => {
+          editor.chain().focus().setFontFamily('Verdana').run();
+          setShowFontMenu(false);
+        }}
+      >
+        Verdana
+      </button>
+    </div>
+  )}
+</div>
 
 <select
   className="tb-select tb-select-size"
