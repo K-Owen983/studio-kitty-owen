@@ -1364,6 +1364,7 @@ body {
   top: calc(100% + 0.35rem);
   left: 0;
   width: 220px;
+  max-height: 60vh;
   background: #fff;
   border: 1px solid var(--border-light);
   border-radius: 8px;
@@ -1371,7 +1372,7 @@ body {
   padding: 0.35rem 0;
   z-index: 20;
   overflow-y: auto;
-overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 .tb-font-option {
