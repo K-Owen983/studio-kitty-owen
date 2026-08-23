@@ -656,7 +656,11 @@ const editImage = () => {
   setShowSizeMenu((prev) => !prev);
 }}
   >
-    <span>Tamaño</span>
+    <span>
+  {editor.getAttributes('textStyle').fontSize
+    ? parseInt(editor.getAttributes('textStyle').fontSize)
+    : 'Tamaño'}
+</span>
 
     <span className="tb-select-arrow">⌄</span>
   </button>
