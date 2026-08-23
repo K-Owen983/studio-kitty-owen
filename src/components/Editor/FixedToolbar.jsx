@@ -590,14 +590,28 @@ const editImage = () => {
   }}
 >
   <option value="">Tamaño</option>
-  <option value="12pt">12</option>
-  <option value="14px">14</option>
-  <option value="16px">16</option>
-  <option value="18px">18</option>
-  <option value="20px">20</option>
-  <option value="24px">24</option>
-  <option value="28px">28</option>
-  <option value="32px">32</option>
+<option value="8pt">8</option>
+<option value="9pt">9</option>
+<option value="10pt">10</option>
+<option value="11pt">11</option>
+<option value="12pt">12</option>
+<option value="13pt">13</option>
+<option value="14pt">14</option>
+<option value="16pt">16</option>
+<option value="18pt">18</option>
+<option value="20pt">20</option>
+<option value="22pt">22</option>
+<option value="24pt">24</option>
+<option value="28pt">28</option>
+<option value="32pt">32</option>
+<option value="36pt">36</option>
+<option value="40pt">40</option>
+<option value="48pt">48</option>
+<option value="56pt">56</option>
+<option value="64pt">64</option>
+<option value="72pt">72</option>
+<option value="80pt">80</option>
+<option value="96pt">96</option>
 </select>
 
         <div className="toolbar-divider" />
