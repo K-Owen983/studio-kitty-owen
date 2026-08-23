@@ -559,7 +559,10 @@ const editImage = () => {
     type="button"
     className="tb-select tb-font-trigger"
     title="Fuente"
-    onClick={() => setShowFontMenu(!showFontMenu)}
+    onClick={() => {
+  setShowSizeMenu(false);
+  setShowFontMenu((prev) => !prev);
+}}
   >
     {editor.getAttributes('textStyle').fontFamily || 'Fuente'}
     <span className="tb-select-arrow">⌄</span>
@@ -658,7 +661,10 @@ const editImage = () => {
     type="button"
     className="tb-select tb-font-trigger"
     title="Tamaño"
-    onClick={() => setShowSizeMenu((prev) => !prev)}
+    onClick={() => {
+  setShowFontMenu(false);
+  setShowSizeMenu((prev) => !prev);
+}}
   >
     <span>
       {editor.getAttributes('textStyle').fontSize
