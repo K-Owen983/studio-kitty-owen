@@ -1353,6 +1353,11 @@ body {
   background-image: none;
 }
 
+.tb-size-trigger {
+  width: 90px;
+  min-width: 90px;
+}
+
 .tb-select-arrow {
   font-size: 0.9rem;
   line-height: 1;
