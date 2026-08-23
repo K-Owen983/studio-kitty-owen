@@ -1335,3 +1335,55 @@ body {
   width: 90px;
   min-width: 110px;
 }
+/* SELECTOR PERSONALIZADO DE FUENTE */
+
+.tb-font-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.tb-font-trigger {
+  width: 90px;
+  min-width: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  background-color: var(--bg-app);
+}
+
+.tb-select-arrow {
+  font-size: 0.9rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.tb-font-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 1000;
+  min-width: 190px;
+  padding: 0.35rem;
+  background: var(--bg-app);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.tb-font-option {
+  display: block;
+  width: 100%;
+  padding: 0.45rem 0.65rem;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.tb-font-option:hover {
+  background: var(--bg-secondary);
+}
