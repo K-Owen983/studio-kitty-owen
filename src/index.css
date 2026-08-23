@@ -450,7 +450,7 @@ body {
 }
 
 .toolbar-secondary {
-  display: none;
+  display: flex;
   align-items: center;
   flex-wrap: nowrap;
   gap: 0.25rem;
