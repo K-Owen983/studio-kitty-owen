@@ -23,6 +23,7 @@ export default function FixedToolbar({
   const [showDownloadMenu, setShowDownloadMenu] = React.useState(false);
   const [showSecondaryToolbar, setShowSecondaryToolbar] = React.useState(false);
   const [showFontMenu, setShowFontMenu] = React.useState(false);
+  const [showSizeMenu, setShowSizeMenu] = React.useState(false);
   const addLink = () => {
   const previousUrl = editor.getAttributes('link').href || '';
   const inputUrl = window.prompt('Ingresa la URL del enlace:', previousUrl);
@@ -652,44 +653,49 @@ const editImage = () => {
   )}
 </div>
 
-<select
-  className="tb-select tb-select-size"
-  title="Tamaño"
-  value={editor.getAttributes('textStyle').fontSize || ''}
-  onChange={(e) => {
-    const fontSize = e.target.value;
+<div className="tb-font-dropdown">
+  <button
+    type="button"
+    className="tb-select tb-font-trigger"
+    title="Tamaño"
+    onClick={() => setShowSizeMenu((prev) => !prev)}
+  >
+    <span>
+      {editor.getAttributes('textStyle').fontSize
+        ? parseInt(editor.getAttributes('textStyle').fontSize)
+        : 'Tamaño'}
+    </span>
 
-    if (fontSize) {
-      editor.chain().focus().setFontSize(fontSize).run();
-    } else {
-      editor.chain().focus().unsetFontSize().run();
-    }
-  }}
->
-  <option value="">Tamaño</option>
-<option value="8pt">8</option>
-<option value="9pt">9</option>
-<option value="10pt">10</option>
-<option value="11pt">11</option>
-<option value="12pt">12</option>
-<option value="13pt">13</option>
-<option value="14pt">14</option>
-<option value="16pt">16</option>
-<option value="18pt">18</option>
-<option value="20pt">20</option>
-<option value="22pt">22</option>
-<option value="24pt">24</option>
-<option value="28pt">28</option>
-<option value="32pt">32</option>
-<option value="36pt">36</option>
-<option value="40pt">40</option>
-<option value="48pt">48</option>
-<option value="56pt">56</option>
-<option value="64pt">64</option>
-<option value="72pt">72</option>
-<option value="80pt">80</option>
-<option value="96pt">96</option>
-</select>
+    <span className="tb-select-arrow">⌄</span>
+  </button>
+
+  {showSizeMenu && (
+    <div className="tb-font-menu tb-size-menu">
+      {[
+        6, 7, 8, 9, 10, 11, 12, 14, 16, 18, 20, 22,
+        24, 26, 28, 32, 36, 40, 44, 48, 52, 56, 60,
+        64, 72, 80, 90, 100
+      ].map((size) => (
+        <button
+          key={size}
+          type="button"
+          className="tb-font-option"
+          onClick={() => {
+            editor
+              .chain()
+              .focus()
+              .setFontSize(`${size}px`)
+              .run();
+
+            setShowSizeMenu(false);
+          }}
+        >
+          {size}
+        </button>
+      ))}
+    </div>
+  )}
+</div>
 
         <div className="toolbar-divider" />
 {/* ALINEACIÓN DE TEXTO */}
