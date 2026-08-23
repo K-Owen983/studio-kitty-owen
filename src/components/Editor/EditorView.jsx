@@ -15,6 +15,7 @@ import CodeBlock from '@tiptap/extension-code-block';
 import Placeholder from '@tiptap/extension-placeholder';
 import TextAlign from '@tiptap/extension-text-align';
 import FixedToolbar from './FixedToolbar';
+import { NodeSelection } from 'prosemirror-state';
 import CoverUploader from './CoverUploader';
 import AutoSaveIndicator from './AutoSaveIndicator';
 import LivePreviewModal from '../Preview/LivePreviewModal';
@@ -127,6 +128,22 @@ TextAlign.configure({
       })
     ],
     content: currentPublication?.contentJson || currentPublication?.contentHtml || '',
+    
+  editorProps: {
+  handleClickOn: (view, pos, node, nodePos, event, direct) => {
+    if (node.type.name !== 'image') {
+      return false;
+    }
+
+    view.dispatch(
+      view.state.tr.setSelection(
+        NodeSelection.create(view.state.doc, nodePos)
+      )
+    );
+
+    return true;
+  },
+},
     onUpdate: () => {
       setIsDirty(true);
     }
