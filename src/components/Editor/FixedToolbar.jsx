@@ -565,8 +565,7 @@ const editImage = () => {
 }}
   >
     {editor.getAttributes('textStyle').fontFamily || 'Fuente'}
-    <span className="tb-select-arrow">⌄</span>
-  </button>
+      </button>
 
   {showFontMenu && (
     <div className="tb-font-menu">
@@ -662,8 +661,7 @@ const editImage = () => {
     : 'Tamaño'}
 </span>
 
-    <span className="tb-select-arrow">⌄</span>
-  </button>
+      </button>
 
   {showSizeMenu && (
     <div className="tb-font-menu tb-size-menu">
