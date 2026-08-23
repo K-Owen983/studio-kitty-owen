@@ -1350,6 +1350,7 @@ body {
   justify-content: space-between;
   gap: 0.5rem;
   background-color: var(--bg-app);
+  background-image: none;
 }
 
 .tb-select-arrow {
@@ -1360,30 +1361,31 @@ body {
 
 .tb-font-menu {
   position: absolute;
-  top: calc(100% + 4px);
+  top: calc(100% + 0.35rem);
   left: 0;
-  z-index: 1000;
-  min-width: 190px;
-  padding: 0.35rem;
-  background: var(--bg-app);
+  width: 220px;
+  background: #fff;
   border: 1px solid var(--border-light);
   border-radius: 8px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 0.35rem 0;
+  z-index: 20;
+  overflow: hidden;
 }
 
 .tb-font-option {
   display: block;
   width: 100%;
-  padding: 0.45rem 0.65rem;
+  padding: 0.65rem 0.85rem;
   border: none;
-  border-radius: 6px;
   background: transparent;
-  color: var(--text-primary);
+  color: var(--text);
+  font: inherit;
   font-size: 0.875rem;
   text-align: left;
   cursor: pointer;
 }
 
 .tb-font-option:hover {
-  background: var(--bg-secondary);
+  background: #f7f3fa;
 }
